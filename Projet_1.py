@@ -505,6 +505,7 @@ if choice == "Prévisions de Prix":
     
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
+      df_tot2 = transfo(df)
       y = df['SalePrice']
       X = df_tot2.iloc[:,0:-2]
 
