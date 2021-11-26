@@ -285,35 +285,35 @@ if choice == "Tests d'hypothèse":
         
     if sub_choice == 'Test 2' :
       
-        st.write("")
-        st.write("")
+       st.write("")
+       st.write("")
 
-        st.title("Tests d'hypothèse 2")
-        st.title("")
-        st.write("")
-        fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
-        fig.update_yaxes(range= [0, 400000])
-        fig.update_traces(quartilemethod="exclusive")
-        fig.update_yaxes(title_text="<b>Sale Price")
-        fig.update_xaxes(title_text="<b>MS Zoning</b>")
-        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+       st.title("Tests d'hypothèse 2")
+       st.title("")
+       st.write("")
+       fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
+       fig.update_yaxes(range= [0, 400000])
+       fig.update_traces(quartilemethod="exclusive")
+       fig.update_yaxes(title_text="<b>Sale Price")
+       fig.update_xaxes(title_text="<b>MS Zoning</b>")
+       fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
                     'paper_bgcolor': 'rgba(0,0,0,0)', })
-        fig.update_layout(title='<b>Prices by MS Zoning</b>',
+       fig.update_layout(title='<b>Prices by MS Zoning</b>',
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
 
-        st.plotly_chart(fig, use_container_width=True)
+       st.plotly_chart(fig, use_container_width=True)
     
-        ttest,pval = ttest_ind(RM,C, alternative ="greater")
+       ttest,pval = ttest_ind(RM,C, alternative ="greater")
 
-        st.write("H0 : mean(RM) = mean(C)")
-        st.write("H1 : mean(RM) > mean(C)")
+       st.write("H0 : mean(RM) = mean(C)")
+       st.write("H1 : mean(RM) > mean(C)")
       
-        st.write("p-value",pval)
+       st.write("p-value",pval)
 
-        if pval <0.05:
-          st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
-        else:
-          st.subheader("We Accept the null hypothesis")
+       if pval <0.05:
+         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
+       else:
+         st.subheader("We Accept the null hypothesis")
 
 if choice == "Prévisions de Prix":
 
