@@ -28,7 +28,7 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    page_icon="📈", layout="wide",
                    initial_sidebar_state="expanded",
                    
-#st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True))
+
 
 df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train.csv")
 
