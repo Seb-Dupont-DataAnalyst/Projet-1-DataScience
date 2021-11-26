@@ -30,9 +30,9 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    )
 
 df = pd.read_csv(
-    r"https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/train (2).csv")
+    "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/train (2).csv")
 df_test = pd.read_csv(
-    r"https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/test.csv")
+    "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/test.csv")
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
