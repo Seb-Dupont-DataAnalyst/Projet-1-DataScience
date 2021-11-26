@@ -367,7 +367,7 @@ if choice == "Tests d'hypothèse":
        st.markdown("<body class='p'>Tests d'hypothèse 2</body>", unsafe_allow_html=True)
        st.title("")
        st.write("")
-       st.write('SUPPOSITION : "Le prix des maisons situées dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."')
+       st.subheader('SUPPOSITION : "Le prix des maisons situées dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."')
        code = ("""
        A   Agriculture
        C   Commercial
