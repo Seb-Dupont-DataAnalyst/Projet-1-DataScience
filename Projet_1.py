@@ -62,7 +62,7 @@ if choice == "Accueil":
     st.title("")
     
     st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
-    st.image(http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif")
+    st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif")
 
 if choice == "Analyse Exploratoire":
 
