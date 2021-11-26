@@ -289,18 +289,35 @@ if choice == "Tests d'hypothèse":
       st.title("")
       st.write("")
       st.write('AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.')
-      st.title("")    
-      fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
-      fig.update_yaxes(range= [0, 400000])
-      fig.update_traces(quartilemethod="exclusive")
-      fig.update_yaxes(title_text="<b>Sale Price")
-      fig.update_xaxes(title_text="<b>MS Zoning</b>")
-      fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
-                    'paper_bgcolor': 'rgba(0,0,0,0)', })
-      fig.update_layout(title='<b>Prices by MS Zoning</b>',
-                       title_x=0.5, title_font_family="Verdana", showlegend=False)
+      st.title("") 
+          code = ("""
+      A   Agriculture
+      C   Commercial
+      FV  Floating Village Residential
+      I   Industrial
+      RH  Residential High Density
+      RL  Residential Low Density
+      RP  Residential Low Density Park
+      RM  Residential Medium Density""")
+    
+    
 
-      st.plotly_chart(fig, use_container_width=True)
+      col1, col2 = st.columns([1,3])
+
+      with col1:
+        st.code(code, language = 'python')
+      with col2:
+        fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
+        fig.update_yaxes(range= [0, 400000])
+        fig.update_traces(quartilemethod="exclusive")
+        fig.update_yaxes(title_text="<b>Sale Price")
+        fig.update_xaxes(title_text="<b>MS Zoning</b>")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                      'paper_bgcolor': 'rgba(0,0,0,0)', })
+        fig.update_layout(title='<b>Prices by MS Zoning</b>',
+                         title_x=0.5, title_font_family="Verdana", showlegend=False)
+
+        st.plotly_chart(fig, use_container_width=True)
       st.write("Utilisation d'un t-test")
       #st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
       st.write("H0 : mean(RM) = mean(C)")
