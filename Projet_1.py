@@ -61,7 +61,7 @@ if choice == "Accueil":
     st.markdown('<body class="p">Bonjour et bienvenue pour cette présentation</body>', unsafe_allow_html=True)
     
     st.title("")
-    col1, col2, col3 = st.columns([1,3,1])
+    col1, col2, col3 = st.columns([1,8,1])
     with col1:
       st.write("")
     with col2:
