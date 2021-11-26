@@ -126,13 +126,13 @@ if choice == "Analyse Exploratoire":
 
     st.plotly_chart(fig, use_container_width=True)
 
-    df_count = df_filtered.groupby(['MSZoning', 'YearBuilt', 'BldgType', 'GarageType'])['SalePrice'].count()
+    df_count = df_filtered.groupby(['MSZoning', 'YearBuilt', 'BldgType'])['SalePrice'].count()
     df_count = df_count.reset_index()
-    df_count.columns = ['MSZoning',  'YearBuilt', 'BldgType', 'GarageType','Count']
+    df_count.columns = ['MSZoning',  'YearBuilt', 'BldgType','Count']
 
-    df_count_inf = df_filtered_inf.groupby(['MSZoning', 'YearBuilt', 'BldgType', 'GarageType'])['SalePrice'].count()
+    df_count_inf = df_filtered_inf.groupby(['MSZoning', 'YearBuilt', 'BldgType'])['SalePrice'].count()
     df_count_inf = df_count_inf.reset_index()
-    df_count_inf.columns = ['MSZoning',  'YearBuilt', 'BldgType', 'GarageType','Count']
+    df_count_inf.columns = ['MSZoning',  'YearBuilt', 'BldgType','Count']
 
     fig10 = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
     fig10.add_trace(go.Pie(labels=df_count_inf['MSZoning'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
@@ -201,7 +201,7 @@ if choice == "Analyse Exploratoire":
     
     
     fig = px.box(df, x="GarageType", y="SalePrice", color = "GarageType")
-    fig.update_yaxes(range= [0, 600000])
+    #fig.update_yaxes(range= [0, 600000])
     fig.update_layout(showlegend=False)
     fig.update_traces(quartilemethod="exclusive")
     fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
