@@ -401,100 +401,102 @@ if choice == "Tests d'hypothèse":
 
 
 if choice == "Prévisions de Prix":
-
-    st.title("")
-    st.title("")
-    st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
-    st.title("")
-    st.write("")
-
-    df_tot2 = transfo(df)
-
-    y = df['SalePrice']
-    X = df_tot2.iloc[:,0:-2]
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
-
-    liste_col = X.columns.tolist()
-
-    modelGBR = GradientBoostingRegressor(subsample=1.0,n_estimators=68,min_samples_split=4,max_depth=4,learning_rate=0.06)
-    modelGBR.fit(X_train, y_train)
-    score_train_GBR = modelGBR.score(X_train,y_train)
-    score_test_GBR = modelGBR.score(X_test,y_test) 
-    print('score_train=', score_train_GBR,'score_test=', score_test_GBR)
-
-    modelRF = RandomForestRegressor(max_depth=7, min_samples_split=3, n_estimators=129, bootstrap=False, max_features='sqrt')
-    modelRF.fit(X_train, y_train)
-    score_train_RF = modelRF.score(X_train,y_train)
-    score_test_RF = modelRF.score(X_test,y_test) 
-    print('score_train=', score_train_RF,'score_test=', score_test_RF)
-
-    modelKNN = KNeighborsRegressor(n_neighbors=6)
-    modelKNN.fit(X_train, y_train)
-    score_train_KNN = modelKNN.score(X_train,y_train)
-    score_test_KNN = modelKNN.score(X_test,y_test) 
-    print('score_train=', score_train_KNN,'score_test=', score_test_KNN)
-
-    modelDTR = DecisionTreeRegressor(max_depth=3)
-    modelDTR.fit(X_train, y_train)
-    score_train_DTR = modelDTR.score(X_train,y_train)
-    score_test_DTR = modelDTR.score(X_test,y_test) 
-    print('score_train=', score_train_DTR,'score_test=', score_test_DTR)
-
-    modelLR = LinearRegression()
-    modelLR.fit(X_train, y_train)
-    score_train_LR = modelLR.score(X_train,y_train)
-    score_test_LR = modelLR.score(X_test,y_test) 
-    print('score_train=', score_train_LR,'score_test=', score_test_LR)
-
-    RMSE_LR = round(np.sqrt(mean_squared_log_error(y, modelLR.predict(X))),2)
-    RMSE_KNN = round(np.sqrt(mean_squared_log_error(y, modelKNN.predict(X))),2)
-    RMSE_DTR = round(np.sqrt(mean_squared_log_error(y, modelDTR.predict(X))),2)
-    RMSE_RF = round(np.sqrt(mean_squared_log_error(y, modelRF.predict(X))),2)
-    RMSE_GBR = round(np.sqrt(mean_squared_log_error(y, modelGBR.predict(X))),2)
-
-    dict_RMSE = {'Gradient Boosting': RMSE_GBR, 'Random Forest' : RMSE_RF, 'Linear Regression' : RMSE_LR,
-             'KNN' : RMSE_KNN, 'Decision Tree' : RMSE_DTR}
-
-    values_RMSE = list(dict_RMSE.values())
-    names_RMSE = list(dict_RMSE.keys())
-
-    dict_score_test = {'Gradient Boosting': round(score_test_GBR,2), 'Random Forest' : round(score_test_RF,2), 'Linear Regression' : round(score_test_LR,2),
-             'KNN' : round(score_test_KNN,2), 'Decision Tree' : round(score_test_DTR,2)}
-
-    values_score_test = list(dict_score_test.values())
-    names_score_test = list(dict_score_test.keys())
-
-    dict_score_train = {'Gradient Boosting': round(score_train_GBR,2), 'Random Forest' : round(score_train_RF,2), 'Linear Regression' : round(score_train_LR,2),
-         'KNN' : round(score_train_KNN,2), 'Decision Tree' : round(score_train_DTR,2)}
-
-    values_score_train = list(dict_score_train.values())
-    names_score_train = list(dict_score_train.keys())
-
-    fig = make_subplots(specs=[[{"secondary_y": True}]])
-    fig.add_trace(go.Scatter(x=names_RMSE, y=values_RMSE, text = values_RMSE,
-                        mode='lines+markers+text',
-                        name='RMSE'),secondary_y=False)
-    fig.add_trace(go.Scatter(x=names_score_test, y=values_score_test, text = values_score_test,
-                        mode='lines+markers+text',
-                        name='Test Scores'), secondary_y=True)
-    fig.add_trace(go.Scatter(x=names_score_train, y=values_score_train, text = values_score_train,
-                        mode='lines+markers+text',
-                        name='Train Scores'), secondary_y=True)
-    fig.update_yaxes(title_text="<b>RMSE</b>", secondary_y=False)
-    fig.update_traces(texttemplate='%{text:.1}',textposition='top center')
-    fig.update_yaxes(title_text="<b>Scores</b>", secondary_y=True, range= [0, 1])
-    fig.update_xaxes(title_text="<b>ML Models</b>")
-    fig.update_layout(title="<b>ML Models comparison</b>",
-                        title_x=0.5, title_font_family="Verdana")
-    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
-                    'paper_bgcolor': 'rgba(0,0,0,0)', })
-    #fig.update_layout(width=900, height=500)
     
+    sub_choice2= st.sidebar.radio("Prévisions de Prix", ('Choix du modèle de ML', 'Prévisions des Prix de Vente'))
+    if subchoice2 == 'Choix du modèle de ML': 
+      st.title("")
+      st.title("")
+      st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
+      st.title("")
+      st.write("")
 
-    st.plotly_chart(fig, use_container_width=True)
-    st.header("")
-    st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
+      df_tot2 = transfo(df)
+
+      y = df['SalePrice']
+      X = df_tot2.iloc[:,0:-2]
+
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+      liste_col = X.columns.tolist()
+
+      modelGBR = GradientBoostingRegressor(subsample=1.0,n_estimators=68,min_samples_split=4,max_depth=4,learning_rate=0.06)
+      modelGBR.fit(X_train, y_train)
+      score_train_GBR = modelGBR.score(X_train,y_train)
+      score_test_GBR = modelGBR.score(X_test,y_test) 
+      print('score_train=', score_train_GBR,'score_test=', score_test_GBR)
+
+      modelRF = RandomForestRegressor(max_depth=7, min_samples_split=3, n_estimators=129, bootstrap=False, max_features='sqrt')
+      modelRF.fit(X_train, y_train)
+      score_train_RF = modelRF.score(X_train,y_train)
+      score_test_RF = modelRF.score(X_test,y_test) 
+      print('score_train=', score_train_RF,'score_test=', score_test_RF)
+
+      modelKNN = KNeighborsRegressor(n_neighbors=6)
+      modelKNN.fit(X_train, y_train)
+      score_train_KNN = modelKNN.score(X_train,y_train)
+      score_test_KNN = modelKNN.score(X_test,y_test) 
+      print('score_train=', score_train_KNN,'score_test=', score_test_KNN)
+
+      modelDTR = DecisionTreeRegressor(max_depth=3)
+      modelDTR.fit(X_train, y_train)
+      score_train_DTR = modelDTR.score(X_train,y_train)
+      score_test_DTR = modelDTR.score(X_test,y_test) 
+      print('score_train=', score_train_DTR,'score_test=', score_test_DTR)
+
+      modelLR = LinearRegression()
+      modelLR.fit(X_train, y_train)
+      score_train_LR = modelLR.score(X_train,y_train)
+      score_test_LR = modelLR.score(X_test,y_test) 
+      print('score_train=', score_train_LR,'score_test=', score_test_LR)
+
+      RMSE_LR = round(np.sqrt(mean_squared_log_error(y, modelLR.predict(X))),2)
+      RMSE_KNN = round(np.sqrt(mean_squared_log_error(y, modelKNN.predict(X))),2)
+      RMSE_DTR = round(np.sqrt(mean_squared_log_error(y, modelDTR.predict(X))),2)
+      RMSE_RF = round(np.sqrt(mean_squared_log_error(y, modelRF.predict(X))),2)
+      RMSE_GBR = round(np.sqrt(mean_squared_log_error(y, modelGBR.predict(X))),2)
+
+      dict_RMSE = {'Gradient Boosting': RMSE_GBR, 'Random Forest' : RMSE_RF, 'Linear Regression' : RMSE_LR,
+               'KNN' : RMSE_KNN, 'Decision Tree' : RMSE_DTR}
+
+      values_RMSE = list(dict_RMSE.values())
+      names_RMSE = list(dict_RMSE.keys())
+
+      dict_score_test = {'Gradient Boosting': round(score_test_GBR,2), 'Random Forest' : round(score_test_RF,2), 'Linear Regression' : round(score_test_LR,2),
+               'KNN' : round(score_test_KNN,2), 'Decision Tree' : round(score_test_DTR,2)}
+
+      values_score_test = list(dict_score_test.values())
+      names_score_test = list(dict_score_test.keys())
+
+      dict_score_train = {'Gradient Boosting': round(score_train_GBR,2), 'Random Forest' : round(score_train_RF,2), 'Linear Regression' : round(score_train_LR,2),
+           'KNN' : round(score_train_KNN,2), 'Decision Tree' : round(score_train_DTR,2)}
+
+      values_score_train = list(dict_score_train.values())
+      names_score_train = list(dict_score_train.keys())
+
+      fig = make_subplots(specs=[[{"secondary_y": True}]])
+      fig.add_trace(go.Scatter(x=names_RMSE, y=values_RMSE, text = values_RMSE,
+                          mode='lines+markers+text',
+                          name='RMSE'),secondary_y=False)
+      fig.add_trace(go.Scatter(x=names_score_test, y=values_score_test, text = values_score_test,
+                          mode='lines+markers+text',
+                          name='Test Scores'), secondary_y=True)
+      fig.add_trace(go.Scatter(x=names_score_train, y=values_score_train, text = values_score_train,
+                          mode='lines+markers+text',
+                          name='Train Scores'), secondary_y=True)
+      fig.update_yaxes(title_text="<b>RMSE</b>", secondary_y=False)
+      fig.update_traces(texttemplate='%{text:.1}',textposition='top center')
+      fig.update_yaxes(title_text="<b>Scores</b>", secondary_y=True, range= [0, 1])
+      fig.update_xaxes(title_text="<b>ML Models</b>")
+      fig.update_layout(title="<b>ML Models comparison</b>",
+                          title_x=0.5, title_font_family="Verdana")
+      fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                      'paper_bgcolor': 'rgba(0,0,0,0)', })
+      #fig.update_layout(width=900, height=500)
+
+
+      st.plotly_chart(fig, use_container_width=True)
+      st.header("")
+      st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
     
 if choice == 'Fichier CSV' : 
     st.title("")
