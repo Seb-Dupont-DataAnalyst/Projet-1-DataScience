@@ -29,8 +29,8 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    initial_sidebar_state="expanded",
                    )
 
-link = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/train (2).csv"
-link_test = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/test.csv"
+link = "https://deepnote.com/project/WCS-Data-Science-Training-Analysis-and-Predictions-Duplicate-n9NPJ-fvSyG4ChxA3M0G9g/%2Ftrain.csv"
+link_test = "https://deepnote.com/project/WCS-Data-Science-Training-Analysis-and-Predictions-Duplicate-n9NPJ-fvSyG4ChxA3M0G9g/%2Ftest.csv"
 
 df = pd.read_csv(link)
     
