@@ -219,9 +219,9 @@ if choice == "Analyse Exploratoire":
 
 if choice == 'Corrélation':
 
-    st.write("")
-    st.write("")
-    st.title("Analyse des corrélations")
+    st.title("")
+    st.title("")
+    st.markdown('<body class="p">Analyse des corrélations</body>', unsafe_allow_html=True)
     st.title("")
     st.write("")
 
@@ -240,10 +240,10 @@ if choice == "Tests d'hypothèse":
     sub_choice= st.sidebar.radio("Tests d'hypothèse", ('Test 1', 'Test 2')) 
 
     if sub_choice == 'Test 1' :
-      st.write("")
-      st.write("")
-
-      st.title("Tests d'hypothèse 1")
+      st.title("")
+      st.title("")
+      st.markdown("<body class='p'>Tests d'hypothèse 1</body>", unsafe_allow_html=True)
+      
       st.title("")
       st.write("")
       st.write('AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.')
@@ -302,10 +302,10 @@ if choice == "Tests d'hypothèse":
         
     if sub_choice == 'Test 2' :
       
-       st.write("")
-       st.write("")
+       st.title("")
+       st.title("")
 
-       st.title("Tests d'hypothèse 2")
+       st.markdown("<body class='p'>Tests d'hypothèse 2</body>", unsafe_allow_html=True)
        st.title("")
        st.write("")
        st.write('SUPPOSITION : "Le prix des maisons situées en dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."')
@@ -360,9 +360,9 @@ if choice == "Tests d'hypothèse":
 
 if choice == "Prévisions de Prix":
 
-    st.write("")
-    st.write("")
-    st.title("Prévisions de Prix")
+    st.title("")
+    st.title("")
+    st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
     st.title("")
     st.write("")
 
@@ -455,7 +455,9 @@ if choice == "Prévisions de Prix":
     st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
     
 if choice == 'Fichier CSV' : 
-  
+    st.title("")
+    st.title("")
+    st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
     df_test9 = transfo(df_test)
     df_test9.dropna(axis=0, inplace=True)  
     df_test9.to_csv("result_file", index=False)
