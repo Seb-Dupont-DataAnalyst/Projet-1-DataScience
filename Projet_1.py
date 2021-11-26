@@ -112,7 +112,7 @@ if choice == "Analyse Exploratoire":
 
 
 
-    choix_années = st.select_slider('Choisissez la période à étudier:',options=years)
+    
     st.write("")
 
     df_filtered = df[df["YearBuilt"] >= choix_années]
@@ -152,6 +152,8 @@ if choice == "Analyse Exploratoire":
     fig.update_traces(quartilemethod="exclusive")
 
     st.plotly_chart(fig, use_container_width=True)
+    
+    choix_années = st.select_slider('Choisissez la période à étudier:',options=years)
 
     df_count = df_filtered.groupby(['MSZoning', 'YearBuilt', 'BldgType'])['SalePrice'].count()
     df_count = df_count.reset_index()
