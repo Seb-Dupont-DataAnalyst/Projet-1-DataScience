@@ -151,15 +151,15 @@ if choice == "Analyse Exploratoire":
     df_count_inf = df_count_inf.reset_index()
     df_count_inf.columns = ['MSZoning',  'YearBuilt', 'BldgType','Count']
     
-    code = ("""MSZoning: Identifies the general zoning classification of the sale.
+    code = ("""
       A    Agriculture
       C    Commercial
-      FV  Floating Village Residential
-      I      Industrial
-      RH Residential High Density
-      RL  Residential Low Density
-      RP  Residential Low Density Park
-      RM Residential Medium Density""")
+      FV   Floating Village Residential
+      I    Industrial
+      RH   Residential High Density
+      RL   Residential Low Density
+      RP   Residential Low Density Park
+      RM   Residential Medium Density""")
     
     
 
