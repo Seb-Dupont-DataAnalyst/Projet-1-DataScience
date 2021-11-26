@@ -1,0 +1,114 @@
+.stTextInput>div>div>input {
+    color: black;
+    font-style: italic;
+    height: auto;  
+    }
+    
+    .stTextInput :hover {
+    background-color: white;
+    border-color : gold;
+    color : gold
+    }
+    
+    
+    .stTextArea :hover {
+    background-color: white;
+    border-color : red;
+    color : red
+    }
+    
+    .stButton{
+    color : tomato;
+    font-style: bold;
+    text-align: center;
+    }
+    
+    .stButton :hover {
+    background-color: black;
+    border-color : grey;
+    color : grey
+    }
+    
+    .title {
+    color:black;
+    background-color: transparent;
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    font-size:50px; 
+    border: 2px solid black; 
+    text-align: center;
+    display:block; 
+    padding:0 5px;
+    }
+    
+    
+    .stSelectbox :hover {
+    background-color: white;
+    border-color : grey;
+    color : grey
+    }
+    
+    
+    .reportview-container {
+    background-size: cover;
+    }
+    .big-font {
+    font-style: italic;
+    font-size: 20px;
+    }
+    
+    .active-row {
+    font-style: italic; 
+    font-family: verdana; 
+    text-align: center; 
+    font-size: 1.2em;
+    border: 1.5px  #dddddd;
+    border-right: 1.5px #dddddd;
+    }
+    
+    .p {
+    color:white;
+    font-family:Verdana; 
+    font-size:28px; 
+    text-align: center;
+    background-color: transparent;
+    font-style: bold;
+    font-style: italic;
+    }
+    
+    .p1 {
+    color:white;
+    font-family:Verdana; 
+    font-size:16px; 
+    text-align: center;
+    background-color: transparent;
+    font-style: italic;
+    }
+    
+    .p2 {
+    color:tomato;
+    font-family:Verdana; 
+    font-size:16px; 
+    text-align: left;
+    background-color: transparent;
+    font-style: italic;
+    }
+    
+    .p3 {
+    color: tomato;
+    font-family:Verdana; 
+    font-size:24px; 
+    text-align: center;
+    background-color: transparent;
+    font-style: bold;
+    }
+    
+    .p4 {
+    color:black;
+    font-family:Verdana; 
+    font-size:14px; 
+    text-align: left;
+    background-color: transparent;
+    font-style: italic;
+    }
+    
+    
