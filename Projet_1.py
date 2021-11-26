@@ -505,8 +505,17 @@ if choice == "Prévisions de Prix":
     
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
-      
+      y = df['SalePrice']
+      X = df_tot2.iloc[:,0:-2]
 
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+      modelGBR = GradientBoostingRegressor(subsample=1.0,n_estimators=68,min_samples_split=4,max_depth=4,learning_rate=0.06)
+      modelGBR.fit(X_train, y_train)
+      df_viz = pd.DataFrame()
+      df_viz['real'] = y
+      df_viz['predict'] = modelGBR.predict(X)
+      df_viz = df_viz.sort_values(by='real')
+      df_viz = df_viz.reset_index()  
       
       fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
       st.write(fig)
