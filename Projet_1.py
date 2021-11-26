@@ -34,7 +34,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Proje
 
 df_test = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 
-df_final = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file (1)")
+df_final = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file_1")
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
@@ -580,6 +580,6 @@ if choice == 'Fichier CSV' :
     st.title("")
     
     st.write(df_final.head(10))
-    st.write('prix de vente moyen:',df_result.mean())
-    st.write('écart type:',df_result.std())
+    st.write('prix de vente moyen:',df_final.mean())
+    st.write('écart type:',df_final.std())
       
