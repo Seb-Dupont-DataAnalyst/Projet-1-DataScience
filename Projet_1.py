@@ -34,7 +34,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Proje
 
 df_test = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 
-df_final = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file.csv")
+df_final = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file")
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
