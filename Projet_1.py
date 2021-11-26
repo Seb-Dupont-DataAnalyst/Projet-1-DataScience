@@ -594,7 +594,7 @@ if choice == "Conclusion":
     with col1:
       st.write("")
     with col2:
-      st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width = 600)
+      st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width = 800)
     with col3:
       st.write("")
       
