@@ -403,7 +403,7 @@ if choice == "Tests d'hypothèse":
 if choice == "Prévisions de Prix":
     
     sub_choice2= st.sidebar.radio("Prévisions de Prix", ('Choix du modèle de ML', 'Prévisions des Prix de Vente'))
-    if subchoice2 == 'Choix du modèle de ML': 
+    if sub_choice2 == 'Choix du modèle de ML': 
       st.title("")
       st.title("")
       st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
