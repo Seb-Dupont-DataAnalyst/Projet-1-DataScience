@@ -236,6 +236,10 @@ if choice == "Tests d'hypothèse":
 
     st.write("")
     st.write("")
+
+    st.title("Tests d'hypothèse")
+    st.title("")
+    st.write("")
     fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
     fig.update_yaxes(range= [0, 400000])
     fig.update_traces(quartilemethod="exclusive")
@@ -247,9 +251,6 @@ if choice == "Tests d'hypothèse":
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
 
     st.plotly_chart(fig, use_container_width=True)
-    st.title("Tests d'hypothèse")
-    st.title("")
-    st.write("")
     st.write("Utilisation d'un t-test")
     st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
     st.write("H0 : mean(RM) = mean(C)")
