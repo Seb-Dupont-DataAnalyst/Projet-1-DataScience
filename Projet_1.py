@@ -566,9 +566,12 @@ if choice == "Prévisions de Prix":
       st.title("")
       st.title("")
       
-      fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
+      fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
       fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
                       'paper_bgcolor': 'rgba(0,0,0,0)', })
+      ig.update_layout(title="<b>Compararaison des prédictions avec les prix réels</b>",
+                          title_x=0.5, title_font_family="Verdana")
+      
       st.plotly_chart(fig, use_container_width=True)
       
 if choice == 'Fichier CSV' : 
