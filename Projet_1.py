@@ -276,7 +276,16 @@ if choice == "Tests d'hypothèse":
         st.subheader("We Reject the null hypothesis")
     else:
         st.subheader("We Accept the null hypothesis")
+        
+        
+    ttest,pval = ttest_ind(RM,C, alternative ="greater")
 
+    st.write("p-value",pval)
+
+    if pval <0.05:
+        st.subheader("We Reject the null hypothesis")
+    else:
+        st.subheader("We Accept the null hypothesis")
 
 if choice == "Prévisions de Prix":
 
