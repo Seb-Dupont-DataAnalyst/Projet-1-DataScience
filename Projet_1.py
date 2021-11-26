@@ -497,6 +497,11 @@ if choice == "Prévisions de Prix":
       st.plotly_chart(fig, use_container_width=True)
       st.header("")
       st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
+      df_viz = pd.DataFrame()
+      df_viz['real'] = y
+      df_viz['predict'] = modelGBR.predict(X)
+      df_viz = df_viz.sort_values(by='real')
+      df_viz = df_viz.reset_index()
     
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
