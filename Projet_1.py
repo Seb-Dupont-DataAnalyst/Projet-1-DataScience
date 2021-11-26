@@ -65,7 +65,7 @@ if choice == "Accueil":
     with col1:
       st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
     with col2:
-      st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif")
+      st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 400)
     
     
 
