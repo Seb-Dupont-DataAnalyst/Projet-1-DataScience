@@ -288,17 +288,17 @@ if choice == "Tests d'hypothèse":
       else:
         st.subheader("We Accept the null hypothesis")
                
-        ttest,pval = ttest_ind(RM,C, alternative ='greater')
+      ttest,pval = ttest_ind(RM,C, alternative ='greater')
 
-        st.write("H0 : mean(RM) = mean(C)")
-        st.write("H1 : mean(RM) > mean(C)")
+      st.write("H0 : mean(RM) = mean(C)")
+      st.write("H1 : mean(RM) > mean(C)")
       
-        st.write("p-value",pval)
+      st.write("p-value",pval)
 
-        if pval <0.05:
-         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
-        else:
-         st.subheader("We Accept the null hypothesis")
+      if pval <0.05:
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
+      else:
+        st.subheader("We Accept the null hypothesis")
         
     if sub_choice == 'Test 2' :
       
@@ -345,16 +345,16 @@ if choice == "Tests d'hypothèse":
        else:
         st.subheader("We Accept the null hypothesis")
                
-        ttest,pval = ttest_ind(FV,R, alternative ='greater')
+       ttest,pval = ttest_ind(FV,R, alternative ='greater')
 
-        st.write("H0 : mean(FV) = mean(R)")
-        st.write("H1 : mean(FV) > mean(R)")
+       st.write("H0 : mean(FV) = mean(R)")
+       st.write("H1 : mean(FV) > mean(R)")
       
-        st.write("p-value",pval)
+       st.write("p-value",pval)
 
-        if pval <0.05:
+       if pval <0.05:
          st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones FV est significativement supérieure à celle des maisons situées en zones R")
-        else:
+       else:
          st.subheader("We Accept the null hypothesis")
 
 
