@@ -66,6 +66,9 @@ if choice == "Accueil":
 
 if choice == 'Présentation Générale':
   
+  data = pd.DataFrame({'awesome cities': ['Ames'], 'lat': [
+                        42.034534], 'lon': [-93.620369]})
+  st.map(data)
   st.title("")
   st.title("")
   st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
