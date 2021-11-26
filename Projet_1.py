@@ -544,6 +544,7 @@ if choice == "Prévisions de Prix":
     
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
+      st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
       df_tot2 = transfo(df)
       y = df['SalePrice']
       X = df_tot2.iloc[:,0:-2]
@@ -559,7 +560,7 @@ if choice == "Prévisions de Prix":
       
       st.title("")
       st.title("")
-      st.markdown('<body class="p"Prévisions des Prix de Vente</body>', unsafe_allow_html=True)
+      
       st.title("")
       st.title("")
       
