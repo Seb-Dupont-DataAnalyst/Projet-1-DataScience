@@ -57,8 +57,9 @@ choice = st.sidebar.radio("", ('Accueil', 'Présentation Générale', "Analyse E
 if choice == "Accueil":
 
     st.title("")
+    st.title("")
+    st.markdown('<body class="p">Bonjour et bienvenue pour cette présentation</body>', unsafe_allow_html=True)
     
-    st.write("Bonjour, bienvenue pour cette présentation....")
     st.title("")
     
     st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
