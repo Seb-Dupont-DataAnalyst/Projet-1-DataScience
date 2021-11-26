@@ -423,8 +423,7 @@ if choice == "Tests d'hypothèse":
                
        ttest,pval = ttest_ind(FV,R, alternative ='greater')
 
-       st.write("H0 : mean(FV) = mean(R)")
-       st.write("H1 : mean(FV) > mean(R)")
+
       
        st.write("p-value",round(pval,5))
 
