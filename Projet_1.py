@@ -66,14 +66,14 @@ if choice == "Accueil":
 
 if choice == 'Présentation Générale':
   
-  data = pd.DataFrame({'awesome cities': ['Ames'], 'lat': [
-                        42.034534], 'lon': [-93.620369]})
-  st.map(data)
+
   st.title("")
   st.title("")
   st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
   st.title("")
-  st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
+  data = pd.DataFrame({'awesome cities': ['Ames'], 'lat': [
+                        42.034534], 'lon': [-93.620369]})
+  st.map(data)
   st.header("")
   st.write("Dataset sur les ventes des propriétés immobilières individuelles de la ville d'Ames dans l'Iowa entre 2006 et 2010.")
   st.write("2919 lignes et 80 variables.")
