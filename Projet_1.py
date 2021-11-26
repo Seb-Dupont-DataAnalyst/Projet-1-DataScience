@@ -237,76 +237,10 @@ if choice == "Tests d'hypothèse":
     sub_choice= st.sidebar.radio("Tests d'hypothèse", ('Test 1', 'Test 2')) 
 
     if sub_choice == 'Test 1' :
-    st.write("")
-    st.write("")
-
-    st.title("Tests d'hypothèse 1")
-    st.title("")
-    st.write("")
-    fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
-    fig.update_yaxes(range= [0, 400000])
-    fig.update_traces(quartilemethod="exclusive")
-    fig.update_yaxes(title_text="<b>Sale Price")
-    fig.update_xaxes(title_text="<b>MS Zoning</b>")
-    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
-                    'paper_bgcolor': 'rgba(0,0,0,0)', })
-    fig.update_layout(title='<b>Prices by MS Zoning</b>',
-                       title_x=0.5, title_font_family="Verdana", showlegend=False)
-
-    st.plotly_chart(fig, use_container_width=True)
-    st.write("Utilisation d'un t-test")
-    st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
-    st.write("H0 : mean(RM) = mean(C)")
-    st.write("H1 : mean(RM) ≠ mean(C)")
-    
-    #code = ''' RM = df[df['MSZoning'] == 'RM']['SalePrice']
-    #C = df[df['MSZoning'] == 'C (all)']['SalePrice']
-
-    #RM_mean = np.mean(RM)
-    #C_mean = np.mean(C)
-
-    #RM_std = RM.std()
-    #C_std = C.std()
-
-    #ttest,pval = ttest_ind(RM,C)
-
-    #if pval <0.05:
-        #print("Reject the null hypothesis")
-    #else:
-        #print("Accept the null hypothesis")'''
-
-    #st.code(code, language='python')
-
-    RM = df[df['MSZoning'] == 'RM']['SalePrice']
-    C = df[df['MSZoning'] == 'C (all)']['SalePrice']
-
-    RM_mean = round(np.mean(RM),1)
-    C_mean = round(np.mean(C),1)
-
-    st.write("RM mean value:",RM_mean)
-    st.write("C mean value:",C_mean)
-
-    RM_std = round(RM.std(),1)
-    C_std = round(C.std(),1)
-
-    st.write("RM std value:",RM_std)
-    st.write("C std value:",C_std)
-
-    ttest,pval = ttest_ind(RM,C)
-
-    st.write("p-value",pval)
-
-    if pval <0.05:
-        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
-    else:
-        st.subheader("We Accept the null hypothesis")
-        
-    if sub_choice == 'Test 2' :
-      
       st.write("")
       st.write("")
 
-      st.title("Tests d'hypothèse 2")
+      st.title("Tests d'hypothèse 1")
       st.title("")
       st.write("")
       fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
@@ -320,18 +254,66 @@ if choice == "Tests d'hypothèse":
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
 
       st.plotly_chart(fig, use_container_width=True)
-    
-      ttest,pval = ttest_ind(RM,C, alternative ="greater")
-
+      st.write("Utilisation d'un t-test")
+      st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
       st.write("H0 : mean(RM) = mean(C)")
-      st.write("H1 : mean(RM) > mean(C)")
-      
+      st.write("H1 : mean(RM) ≠ mean(C)")
+    
+      RM = df[df['MSZoning'] == 'RM']['SalePrice']
+      C = df[df['MSZoning'] == 'C (all)']['SalePrice']
+
+      RM_mean = round(np.mean(RM),1)
+      C_mean = round(np.mean(C),1)
+
+      st.write("RM mean value:",RM_mean)
+      st.write("C mean value:",C_mean)
+
+      RM_std = round(RM.std(),1)
+      C_std = round(C.std(),1)
+
+      st.write("RM std value:",RM_std)
+      st.write("C std value:",C_std)
+
+      ttest,pval = ttest_ind(RM,C)
+
       st.write("p-value",pval)
 
       if pval <0.05:
-        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
       else:
         st.subheader("We Accept the null hypothesis")
+        
+      if sub_choice == 'Test 2' :
+      
+        st.write("")
+        st.write("")
+
+        st.title("Tests d'hypothèse 2")
+        st.title("")
+        st.write("")
+        fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
+        fig.update_yaxes(range= [0, 400000])
+        fig.update_traces(quartilemethod="exclusive")
+        fig.update_yaxes(title_text="<b>Sale Price")
+        fig.update_xaxes(title_text="<b>MS Zoning</b>")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                    'paper_bgcolor': 'rgba(0,0,0,0)', })
+        fig.update_layout(title='<b>Prices by MS Zoning</b>',
+                       title_x=0.5, title_font_family="Verdana", showlegend=False)
+
+        st.plotly_chart(fig, use_container_width=True)
+    
+        ttest,pval = ttest_ind(RM,C, alternative ="greater")
+
+        st.write("H0 : mean(RM) = mean(C)")
+        st.write("H1 : mean(RM) > mean(C)")
+      
+        st.write("p-value",pval)
+
+        if pval <0.05:
+          st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
+        else:
+          st.subheader("We Accept the null hypothesis")
 
 if choice == "Prévisions de Prix":
 
