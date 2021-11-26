@@ -232,24 +232,26 @@ if choice == "Tests d'hypothèse":
     st.write("")
     st.write("Utilisation d'un t-test")
     st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
+    st.write("H0 : mean(RM) = mean(C)")
+    st.write("H1 : mean(RM) > mean(C)")
     
-    code = ''' RM = df[df['MSZoning'] == 'RM']['SalePrice']
-    C = df[df['MSZoning'] == 'C (all)']['SalePrice']
+    #code = ''' RM = df[df['MSZoning'] == 'RM']['SalePrice']
+    #C = df[df['MSZoning'] == 'C (all)']['SalePrice']
 
-    RM_mean = np.mean(RM)
-    C_mean = np.mean(C)
+    #RM_mean = np.mean(RM)
+    #C_mean = np.mean(C)
 
-    RM_std = RM.std()
-    C_std = C.std()
+    #RM_std = RM.std()
+    #C_std = C.std()
 
-    ttest,pval = ttest_ind(RM,C)
+    #ttest,pval = ttest_ind(RM,C)
 
-    if pval <0.05:
-        print("Reject the null hypothesis")
-    else:
-        print("Accept the null hypothesis")'''
+    #if pval <0.05:
+        #print("Reject the null hypothesis")
+    #else:
+        #print("Accept the null hypothesis")'''
 
-    st.code(code, language='python')
+    #st.code(code, language='python')
 
     RM = df[df['MSZoning'] == 'RM']['SalePrice']
     C = df[df['MSZoning'] == 'C (all)']['SalePrice']
