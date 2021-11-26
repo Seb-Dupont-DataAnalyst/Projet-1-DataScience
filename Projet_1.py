@@ -327,14 +327,14 @@ if choice == "Tests d'hypothèse":
        R_mean = round(np.mean(R),1)
        FV_mean = round(np.mean(FV),1)
 
-       st.write("RM mean value:",R_mean)
-       st.write("C mean value:",FV_mean)
+       st.write("R mean value:",R_mean)
+       st.write("FV mean value:",FV_mean)
 
        R_std = round(R.std(),1)
        FV_std = round(FV.std(),1)
 
-       st.write("RM std value:",R_std)
-       st.write("C std value:",FV_std)
+       st.write("R std value:",R_std)
+       st.write("FV std value:",FV_std)
  
        ttest,pval = ttest_ind(FV,R)
 
@@ -345,10 +345,10 @@ if choice == "Tests d'hypothèse":
        else:
         st.subheader("We Accept the null hypothesis")
                
-        ttest,pval = ttest_ind(FV,FR, alternative ='greater')
+        ttest,pval = ttest_ind(FV,R, alternative ='greater')
 
-        st.write("H0 : mean(R) = mean(FV)")
-        st.write("H1 : mean(R) > mean(FV)")
+        st.write("H0 : mean(FV) = mean(R)")
+        st.write("H1 : mean(FV) > mean(R)")
       
         st.write("p-value",pval)
 
