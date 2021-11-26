@@ -67,6 +67,7 @@ if choice == "Accueil":
 if choice == 'Présentation Générale':
   
   st.title("")
+  st.title("")
   st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
   st.title("")
   st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
@@ -84,11 +85,11 @@ if choice == 'Présentation Générale':
 if choice == "Analyse Exploratoire":
 
     
-    
-    st.write("")
-    st.write("")
-    st.title("Analyse Exploratoire")
+     st.title("")
     st.title("")
+    st.markdown('<body class="p">Analyse Exploratoire</body>', unsafe_allow_html=True)
+    st.title("")
+
     st.write("")
     years = df['YearBuilt'].sort_values(ascending=True).unique().tolist()
     
