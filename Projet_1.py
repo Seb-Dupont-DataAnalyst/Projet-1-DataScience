@@ -330,7 +330,7 @@ if choice == "Tests d'hypothèse":
        st.write("RM mean value:",R_mean)
        st.write("C mean value:",FV_mean)
 
-       RM_std = round(R.std(),1)
+       R_std = round(R.std(),1)
        FV_std = round(FV.std(),1)
 
        st.write("RM std value:",R_std)
