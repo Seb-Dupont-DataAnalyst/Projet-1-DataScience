@@ -522,7 +522,7 @@ if choice == "Prévisions de Prix":
       fig.add_trace(go.Scatter(x=names_score_train, y=values_score_train, text = values_score_train,
                           mode='lines+markers+text',
                           name='Train Scores'), secondary_y=True)
-      fig.update_yaxes(title_text="<b>RMSE</b>", secondary_y=False)
+      fig.update_yaxes(title_text="<b>RMSLE</b>", secondary_y=False)
       fig.update_traces(texttemplate='%{text:.1}',textposition='top center')
       fig.update_yaxes(title_text="<b>Scores</b>", secondary_y=True, range= [0, 1])
       fig.update_xaxes(title_text="<b>ML Models</b>")
@@ -535,7 +535,7 @@ if choice == "Prévisions de Prix":
 
       st.plotly_chart(fig, use_container_width=True)
       st.header("")
-      st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
+      st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overfitting et la RMSLE la plus faible")
       df_viz = pd.DataFrame()
       df_viz['real'] = y
       df_viz['predict'] = modelGBR.predict(X)
@@ -580,6 +580,6 @@ if choice == 'Fichier CSV' :
     st.title("")
     
     st.write(df_final.head(10))
-    st.write('prix de vente moyen:',df_final['SalePrice'].mean())
-    st.write('écart type:',df_final['SalePrice'].std())
+    st.write('prix de vente moyen:',round(df_final['SalePrice'].mean(),1))
+    st.write('écart type:',round(df_final['SalePrice'].std(),1))
       
