@@ -396,6 +396,7 @@ if choice == "Tests d'hypothèse":
                          title_x=0.5, title_font_family="Verdana", showlegend=False)
 
          st.plotly_chart(fig, use_container_width=True)
+        
        st.write("Utilisation d'un t-test")
        #st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
        st.write("H0 : mean(FV) = mean(R)")
@@ -557,6 +558,8 @@ if choice == "Prévisions de Prix":
       df_viz = df_viz.reset_index()  
       
       fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
+      fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                      'paper_bgcolor': 'rgba(0,0,0,0)', })
       st.write(fig)
       
 if choice == 'Fichier CSV' : 
