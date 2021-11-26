@@ -52,7 +52,7 @@ def transfo(df):
 
 st.sidebar.title("Bonjour :bar_chart:")
 
-choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
+choice = st.sidebar.radio("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
 
 if choice == "Accueil":
 
