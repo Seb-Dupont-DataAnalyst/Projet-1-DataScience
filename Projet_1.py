@@ -52,7 +52,20 @@ def transfo(df):
 
 st.sidebar.title("Bonjour :bar_chart:")
 
-choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
+choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
+
+if choice == 'Présentation Générale':
+  st.title('Présentation Générale')
+  st.title("")
+  st.write("Dataset sur les ventes des propriétés immobilières individuelles de la ville d'Ames dans l'Iowa entre 2006 et 2010.
+2919 lignes et 80 variables.
+Parmi les variables :
+- 23 nominales : différents types de logements, de garages, d'environnements...
+- 23 ordinales : évaluation de certains équipements
+- 14 discrètes : nombre d'équipements (cuisines, chambres, salles de bains...)
+- 20 continues : dimensions (surfaces)
+Dataset original scindé en 2 datasets de taille égale, l'un d'entraînement, l'autre de test (sans les prix de vente).")
+
 
 if choice == "Accueil":
 
