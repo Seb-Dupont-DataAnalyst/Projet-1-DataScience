@@ -55,10 +55,12 @@ st.sidebar.title("Bonjour :bar_chart:")
 choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix'))
 
 if choice == "Accueil":
-  
+     st.markdown("""  <style> .reportview-container { background:
+    url("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")}
+    </style> """, unsafe_allow_html=True)
     st.title("")
   
-    st.write("Bonjour, bienvenue pour cette présentation....")
+    #st.write("Bonjour, bienvenue pour cette présentation....")
     st.title("")
     
     st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
