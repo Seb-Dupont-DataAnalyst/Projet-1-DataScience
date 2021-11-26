@@ -336,7 +336,7 @@ if choice == "Tests d'hypothèse":
        st.write("RM std value:",R_std)
        st.write("C std value:",FV_std)
  
-       ttest,pval = ttest_ind(FV,FR)
+       ttest,pval = ttest_ind(FV,R)
 
        st.write("p-value",pval)
 
