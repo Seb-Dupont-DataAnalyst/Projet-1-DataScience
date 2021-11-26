@@ -67,7 +67,7 @@ if choice == "Accueil":
 if choice == 'Présentation Générale':
   
   st.header("")
-  st.title('Présentation Générale')
+  st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
   st.title("")
   st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
   st.header("")
