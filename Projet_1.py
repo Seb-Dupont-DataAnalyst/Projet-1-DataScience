@@ -303,7 +303,23 @@ if choice == "Tests d'hypothèse":
 
        st.plotly_chart(fig, use_container_width=True)
     
-       ttest,pval = ttest_ind(RM,C, alternative ="greater")
+       RM = df[df['MSZoning'] == 'RM']['SalePrice']
+       C = df[df['MSZoning'] == 'C (all)']['SalePrice']
+
+       RM_mean = round(np.mean(RM),1)
+       C_mean = round(np.mean(C),1)
+
+       st.write("RM mean value:",RM_mean)
+       st.write("C mean value:",C_mean)
+
+       RM_std = round(RM.std(),1)
+       C_std = round(C.std(),1)
+
+       st.write("RM std value:",RM_std)
+       st.write("C std value:",C_std)
+ 
+      
+       ttest,pval = ttest_ind(RM,C, alternative ='greater')
 
        st.write("H0 : mean(RM) = mean(C)")
        st.write("H1 : mean(RM) > mean(C)")
