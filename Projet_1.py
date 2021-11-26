@@ -578,7 +578,14 @@ if choice == 'Fichier CSV' :
     st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
     st.title("")
     st.title("")
+    df_test9 = transfo(df_test)
+    df_test9.dropna(axis=0, inplace=True)  
+    df_test9['SalePrice_Pred'] = modelGBR.predict(df_test9[liste_col]).round(decimals=0)
+    df_result = df_test9[['Id','SalePrice_Pred']]
+    df_result = df_result.rename(columns={"SalePrice_Pred": "SalePrice"})
+    df_result = df_result.set_index('Id')
+    
     st.write(df_final.head(10))
-    st.write('prix de vente moyen:',df_final.mean())
-    st.write('écart type:',df_final.std())
+    st.write('prix de vente moyen:',df_result.mean())
+    st.write('écart type:',df_result.std())
       
