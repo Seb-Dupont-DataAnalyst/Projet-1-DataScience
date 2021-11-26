@@ -57,7 +57,7 @@ choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analy
 if choice == "Accueil":
 
     st.title("")
-  
+    
     st.write("Bonjour, bienvenue pour cette présentation....")
     st.title("")
     
@@ -66,7 +66,7 @@ if choice == "Accueil":
 
 if choice == 'Présentation Générale':
   
-  st.header("")
+  st.title("")
   st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
   st.title("")
   st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
