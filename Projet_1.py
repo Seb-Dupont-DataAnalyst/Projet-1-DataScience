@@ -428,7 +428,7 @@ if choice == "Tests d'hypothèse":
        st.write("p-value",round(pval,5))
 
        if pval <0.05:
-         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement supérieure à celle des maisons situées en zones R")
+         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement supérieure à celle des maisons situées en zone résidentielle")
        else:
          st.subheader("We Accept the null hypothesis")
 
