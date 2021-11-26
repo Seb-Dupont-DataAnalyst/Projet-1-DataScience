@@ -193,7 +193,7 @@ if choice == "Analyse Exploratoire":
 
       st.plotly_chart(fig10, use_container_width=True)
 
-
+      
 
     code = ("""
         1Fam    Single-family Detached
@@ -248,7 +248,13 @@ if choice == "Analyse Exploratoire":
     st.plotly_chart(fig, use_container_width=True)
     
     
-    fig = px.box(df, x="GarageType", y="SalePrice", color = "GarageType")
+
+    
+    st.plotly_chart(fig, use_container_width=True)
+    
+    
+    df_garage = df.dropna(subset=['GarageType'])
+    fig = px.box(df_garage, x="GarageType", y="SalePrice", color = "GarageType")
     #fig.update_yaxes(range= [0, 600000])
     fig.update_layout(showlegend=False)
     fig.update_traces(quartilemethod="exclusive")
@@ -257,7 +263,6 @@ if choice == "Analyse Exploratoire":
     fig.update_layout(title='<b>Prices by Garage Type</b>',
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
     
-    st.plotly_chart(fig, use_container_width=True)
 
 if choice == 'Corrélation':
 
