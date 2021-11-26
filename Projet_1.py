@@ -402,7 +402,7 @@ if choice == "Tests d'hypothèse":
        st.write("Utilisation d'un t-test")
        #st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
        st.write("H0 : mean(FV) = mean(R)")
-       st.write("H1 : mean(FV) ≠ mean(R)")
+       st.write("H1 : mean(FV) > mean(R)")
     
        R = df[(df['MSZoning'] == 'RM') | (df['MSZoning'] == 'RL') | (df['MSZoning'] == 'RH')]['SalePrice']
        FV = df[df['MSZoning'] == 'FV']['SalePrice']
@@ -419,14 +419,7 @@ if choice == "Tests d'hypothèse":
        #st.write("R std value:",R_std)
        #st.write("FV std value:",FV_std)
  
-       ttest,pval = ttest_ind(FV,R)
 
-       st.write("p-value",round(pval,5))
-
-       if pval <0.05:
-        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement différente de celle des maisons situées en zones R")
-       else:
-        st.subheader("We Accept the null hypothesis")
                
        ttest,pval = ttest_ind(FV,R, alternative ='greater')
 
