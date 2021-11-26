@@ -29,12 +29,11 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    initial_sidebar_state="expanded",
                    )
 
-link = "https://deepnote.com/project/WCS-Data-Science-Training-Analysis-and-Predictions-Duplicate-n9NPJ-fvSyG4ChxA3M0G9g/%2Ftrain.csv"
-link_test = "https://deepnote.com/project/WCS-Data-Science-Training-Analysis-and-Predictions-Duplicate-n9NPJ-fvSyG4ChxA3M0G9g/%2Ftest.csv"
-
+link = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/0bb4023413687d608962772122a3c6b0744d8dd7/test.csv"
 df = pd.read_csv(link)
-    
-df_test = pd.read_csv(link_test)
+
+link2 = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/0bb4023413687d608962772122a3c6b0744d8dd7/test.csv"
+df_test = = pd.read_csv(link2)
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
