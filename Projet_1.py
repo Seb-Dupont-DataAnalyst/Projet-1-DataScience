@@ -72,7 +72,7 @@ if choice == "Analyse Exploratoire":
     st.title("Analyse Exploratoire")
     st.title("")
     st.write("")
-    years = df['YearBuilt'].sort_values(ascending=False).unique().tolist()
+    years = df['YearBuilt'].sort_values(ascending=True).unique().tolist()
     
 
     #years.sort_values(ascending=False)
