@@ -56,7 +56,7 @@ choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analy
 
 if choice == 'Présentation Générale':
   
-  
+  st.header("")
   st.title('Présentation Générale')
   st.title("")
   st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
