@@ -74,7 +74,11 @@ if choice == 'Présentation Générale':
 
   st.title("")
   st.title("")
+ 
   st.markdown('<body class="p">Présentation Générale</body>', unsafe_allow_html=True)
+  st.title("")
+  st.title("")
+  st.write("Où se situe la ville de Ames ?")
   st.title("")
   data = pd.DataFrame({'awesome cities': ['Ames'], 'lat': [
                         42.034534], 'lon': [-93.620369]})
