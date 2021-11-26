@@ -579,4 +579,6 @@ if choice == 'Fichier CSV' :
     st.title("")
     st.title("")
     st.write(df_final.head(10))
+    print('prix de vente moyen:',df_final.mean())
+    print('écart type:',df_final.std())
       
