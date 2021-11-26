@@ -318,12 +318,12 @@ if choice == "Tests d'hypothèse":
       RM_std = round(RM.std(),1)
       C_std = round(C.std(),1)
 
-      st.write("RM std value:",RM_std)
-      st.write("C std value:",C_std)
+      #st.write("RM std value:",RM_std)
+      #st.write("C std value:",C_std)
 
       ttest,pval = ttest_ind(RM,C)
 
-      st.write("p-value",pval)
+      st.write("p-value",round(pval,4))
 
       if pval <0.05:
         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
