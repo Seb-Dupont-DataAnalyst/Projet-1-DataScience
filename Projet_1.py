@@ -233,6 +233,8 @@ if choice == 'Corrélation':
 
 
 if choice == "Tests d'hypothèse":
+  
+    sub_choice= st.sidebar.radio("Tests d'hypothèse", ('Test 1', 'Test 2')) 
 
     st.write("")
     st.write("")
