@@ -34,6 +34,8 @@ df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Proje
 
 df_test = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 
+df_final = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file.csv")
+
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
 
@@ -498,7 +500,6 @@ if choice == 'Fichier CSV' :
     st.title("")
     st.title("")
     st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
-    df_test9 = transfo(df_test)
-    df_test9.dropna(axis=0, inplace=True)  
-    df_test9.to_csv("result_file", index=False)
+
+    st.write(df_final.head())
       
