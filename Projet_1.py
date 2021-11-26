@@ -54,7 +54,7 @@ choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélat
 
 if choice == "Accueil":
   
-    st.write("Bonjour, bienvenue pour cette présentation...."
+    st.write("Bonjour, bienvenue pour cette présentation....")
 
 
 if choice == "Analyse Exploratoire":
