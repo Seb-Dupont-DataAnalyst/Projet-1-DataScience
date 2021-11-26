@@ -544,6 +544,8 @@ if choice == "Prévisions de Prix":
     
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
+      st.title("")
+      st.title("")
       st.markdown('<body class="p">Prévisions de Prix</body>', unsafe_allow_html=True)
       df_tot2 = transfo(df)
       y = df['SalePrice']
