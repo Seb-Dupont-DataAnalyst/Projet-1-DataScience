@@ -246,6 +246,8 @@ if choice == "Tests d'hypothèse":
       st.title("Tests d'hypothèse 1")
       st.title("")
       st.write("")
+      st.write("AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.")
+      st.title("")    
       fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
       fig.update_yaxes(range= [0, 400000])
       fig.update_traces(quartilemethod="exclusive")
@@ -285,6 +287,18 @@ if choice == "Tests d'hypothèse":
         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
       else:
         st.subheader("We Accept the null hypothesis")
+               
+             ttest,pval = ttest_ind(RM,C, alternative ='greater')
+
+       st.write("H0 : mean(RM) = mean(C)")
+       st.write("H1 : mean(RM) > mean(C)")
+      
+       st.write("p-value",pval)
+
+       if pval <0.05:
+         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
+       else:
+         st.subheader("We Accept the null hypothesis")
         
     if sub_choice == 'Test 2' :
       
@@ -294,6 +308,7 @@ if choice == "Tests d'hypothèse":
        st.title("Tests d'hypothèse 2")
        st.title("")
        st.write("")
+       st.write("SUPPOSITION : "Le prix des maisons situées en dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."")
        fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
        fig.update_yaxes(range= [0, 400000])
        fig.update_traces(quartilemethod="exclusive")
@@ -306,33 +321,23 @@ if choice == "Tests d'hypothèse":
 
        st.plotly_chart(fig, use_container_width=True)
     
-       RM = df[df['MSZoning'] == 'RM']['SalePrice']
-       C = df[df['MSZoning'] == 'C (all)']['SalePrice']
+       R = df[df['MSZoning'] == 'RM, RL, RH']['SalePrice']
+       FV = df[df['MSZoning'] == 'FV']['SalePrice']
 
-       RM_mean = round(np.mean(RM),1)
-       C_mean = round(np.mean(C),1)
+       R_mean = round(np.mean(R),1)
+       FV_mean = round(np.mean(FV),1)
 
-       st.write("RM mean value:",RM_mean)
-       st.write("C mean value:",C_mean)
+       st.write("RM mean value:",R_mean)
+       st.write("C mean value:",FV_mean)
 
-       RM_std = round(RM.std(),1)
-       C_std = round(C.std(),1)
+       RM_std = round(R.std(),1)
+       FV_std = round(FV.std(),1)
 
-       st.write("RM std value:",RM_std)
-       st.write("C std value:",C_std)
+       st.write("RM std value:",R_std)
+       st.write("C std value:",FV_std)
  
       
-       ttest,pval = ttest_ind(RM,C, alternative ='greater')
 
-       st.write("H0 : mean(RM) = mean(C)")
-       st.write("H1 : mean(RM) > mean(C)")
-      
-       st.write("p-value",pval)
-
-       if pval <0.05:
-         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
-       else:
-         st.subheader("We Accept the null hypothesis")
 
 if choice == "Prévisions de Prix":
 
