@@ -29,10 +29,12 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    initial_sidebar_state="expanded",
                    )
 
-df = pd.read_csv(
-    "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/train (2).csv")
-df_test = pd.read_csv(
-    "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/test.csv")
+link = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/train (2).csv"
+link_test = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/test.csv"
+
+df = pd.read_csv(link)
+    
+df_test = pd.read_csv(link_test)
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
