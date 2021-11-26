@@ -323,7 +323,7 @@ if choice == "Tests d'hypothèse":
 
       ttest,pval = ttest_ind(RM,C)
 
-      st.write("p-value",round(pval,4))
+      st.write("p-value",round(pval,5))
 
       if pval <0.05:
         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
@@ -335,7 +335,7 @@ if choice == "Tests d'hypothèse":
       st.write("H0 : mean(RM) = mean(C)")
       st.write("H1 : mean(RM) > mean(C)")
       
-      st.write("p-value",pval)
+      st.write("p-value",round(pval,5))
 
       if pval <0.05:
         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
@@ -362,6 +362,10 @@ if choice == "Tests d'hypothèse":
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
 
        st.plotly_chart(fig, use_container_width=True)
+       st.write("Utilisation d'un t-test")
+       #st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
+       st.write("H0 : mean(FV) = mean(R)")
+       st.write("H1 : mean(FV) ≠ mean(R)")
     
        R = df[(df['MSZoning'] == 'RM') | (df['MSZoning'] == 'RL') | (df['MSZoning'] == 'RH')]['SalePrice']
        FV = df[df['MSZoning'] == 'FV']['SalePrice']
@@ -375,12 +379,12 @@ if choice == "Tests d'hypothèse":
        R_std = round(R.std(),1)
        FV_std = round(FV.std(),1)
 
-       st.write("R std value:",R_std)
-       st.write("FV std value:",FV_std)
+       #st.write("R std value:",R_std)
+       #st.write("FV std value:",FV_std)
  
        ttest,pval = ttest_ind(FV,R)
 
-       st.write("p-value",pval)
+       st.write("p-value",round(pval,5))
 
        if pval <0.05:
         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement différente de celle des maisons situées en zones R")
@@ -392,7 +396,7 @@ if choice == "Tests d'hypothèse":
        st.write("H0 : mean(FV) = mean(R)")
        st.write("H1 : mean(FV) > mean(R)")
       
-       st.write("p-value",pval)
+       st.write("p-value",round(pval,5))
 
        if pval <0.05:
          st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement supérieure à celle des maisons situées en zones R")
