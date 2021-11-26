@@ -260,7 +260,7 @@ if choice == "Tests d'hypothèse":
 
       st.plotly_chart(fig, use_container_width=True)
       st.write("Utilisation d'un t-test")
-      st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
+      #st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
       st.write("H0 : mean(RM) = mean(C)")
       st.write("H1 : mean(RM) ≠ mean(C)")
     
