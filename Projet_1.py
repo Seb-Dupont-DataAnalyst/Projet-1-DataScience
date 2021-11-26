@@ -85,7 +85,7 @@ if choice == 'Présentation Générale':
 if choice == "Analyse Exploratoire":
 
     
-     st.title("")
+    st.title("")
     st.title("")
     st.markdown('<body class="p">Analyse Exploratoire</body>', unsafe_allow_html=True)
     st.title("")
