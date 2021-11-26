@@ -192,6 +192,18 @@ if choice == "Analyse Exploratoire":
                        title_x=0.5, title_font_family="Verdana", showlegend=False)
     
     st.plotly_chart(fig, use_container_width=True)
+    
+    
+    fig = px.box(df, x="GarageType", y="SalePrice", color = "GarageType")
+    fig.update_yaxes(range= [0, 600000])
+    fig.update_layout(showlegend=False)
+    fig.update_traces(quartilemethod="exclusive")
+    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                    'paper_bgcolor': 'rgba(0,0,0,0)', })
+    fig.update_layout(title='<b>Prices by Garage Type</b>',
+                       title_x=0.5, title_font_family="Verdana", showlegend=False)
+    
+    st.plotly_chart(fig, use_container_width=True)
 
 if choice == 'Corrélation':
 
