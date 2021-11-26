@@ -52,7 +52,7 @@ def transfo(df):
 
 st.sidebar.title("Bonjour :bar_chart:")
 
-choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix'))
+choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
 
 if choice == "Accueil":
 
@@ -62,6 +62,7 @@ if choice == "Accueil":
     st.title("")
     
     st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
+    st.image(http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif")
 
 if choice == "Analyse Exploratoire":
 
@@ -382,3 +383,10 @@ if choice == "Prévisions de Prix":
     st.plotly_chart(fig, use_container_width=True)
     st.header("")
     st.subheader("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
+    
+if choice == 'Fichier CSV' : 
+  
+    df_test9 = transfo(df_test)
+    df_test9.dropna(axis=0, inplace=True)  
+    df_test9.to_csv("result_file", index=False)
+      
