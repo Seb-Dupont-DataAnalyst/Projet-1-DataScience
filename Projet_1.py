@@ -288,7 +288,7 @@ if choice == "Tests d'hypothèse":
       
       st.title("")
       st.write("")
-      st.write('AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.')
+      st.subheader('AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.')
       st.title("") 
       code = ("""
       A   Agriculture
