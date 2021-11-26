@@ -273,7 +273,7 @@ if choice == "Tests d'hypothèse":
     st.write("p-value",pval)
 
     if pval <0.05:
-        st.subheader("We Reject the null hypothesis")
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement différente de celle des maisons situées en zones C")
     else:
         st.subheader("We Accept the null hypothesis")
         
@@ -283,7 +283,7 @@ if choice == "Tests d'hypothèse":
     st.write("p-value",pval)
 
     if pval <0.05:
-        st.subheader("We Reject the null hypothesis")
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones RM est significativement supérieure à celle des maisons situées en zones C")
     else:
         st.subheader("We Accept the null hypothesis")
 
