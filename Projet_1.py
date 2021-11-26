@@ -506,11 +506,7 @@ if choice == "Prévisions de Prix":
     
     if sub_choice2 == 'Prévisions des Prix de Vente': 
       
-      df_viz = pd.DataFrame()
-      df_viz['real'] = y
-      df_viz['predict'] = modelGBR.predict(X)
-      df_viz = df_viz.sort_values(by='real')
-      df_viz = df_viz.reset_index()
+
       
       fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
       st.write(fig)
