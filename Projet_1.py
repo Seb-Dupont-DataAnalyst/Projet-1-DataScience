@@ -61,9 +61,12 @@ if choice == "Accueil":
     st.markdown('<body class="p">Bonjour et bienvenue pour cette présentation</body>', unsafe_allow_html=True)
     
     st.title("")
-    
-    st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
-    
+    col1, col2, col3 = st.columns([1,3,1])
+    with col1:
+      
+    with col2:
+      st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
+    with col3:
 
 if choice == 'Présentation Générale':
   
