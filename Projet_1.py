@@ -150,21 +150,38 @@ if choice == "Analyse Exploratoire":
     df_count_inf = df_filtered_inf.groupby(['MSZoning', 'YearBuilt', 'BldgType'])['SalePrice'].count()
     df_count_inf = df_count_inf.reset_index()
     df_count_inf.columns = ['MSZoning',  'YearBuilt', 'BldgType','Count']
+    
+    code = ("""MSZoning: Identifies the general zoning classification of the sale.
+      A    Agriculture
+      C    Commercial
+      FV  Floating Village Residential
+      I      Industrial
+      RH Residential High Density
+      RL  Residential Low Density
+      RP  Residential Low Density Park
+      RM Residential Medium Density""")
+    
+    
 
-    fig10 = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-    fig10.add_trace(go.Pie(labels=df_count_inf['MSZoning'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
+    col1, col2 = stcolumns(2)
+
+    with col1:
+      st.code(code, language = 'python')
+    with col2:
+      fig10 = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+      fig10.add_trace(go.Pie(labels=df_count_inf['MSZoning'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
         
-    fig10.add_trace(go.Pie(labels=df_count['MSZoning'], values=df_count['Count'], name="Since " + str(choix_années)),
+      fig10.add_trace(go.Pie(labels=df_count['MSZoning'], values=df_count['Count'], name="Since " + str(choix_années)),
                 1, 2)
-    fig10.update_layout(title="<b>Sale zoning classification</b>",
+      fig10.update_layout(title="<b>Sale zoning classification</b>",
                         title_x=0.5, title_font_family="Verdana")
-    fig10.update_layout(
+      fig10.update_layout(
         # Add annotations in the center of the donut pies.
         annotations=[dict(text='Before ' + str(choix_années), x=0.176, y=0.5, font_size=20, showarrow=False),
                     dict(text='Since ' + str(choix_années), x=0.822, y=0.5, font_size=20, showarrow=False)])
-    fig10.update_traces(hole=.4)
+      fig10.update_traces(hole=.4)
 
-    st.plotly_chart(fig10, use_container_width=True)
+      st.plotly_chart(fig10, use_container_width=True)
 
 
 
