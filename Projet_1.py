@@ -120,7 +120,7 @@ if choice == "Analyse Exploratoire":
 
     st.plotly_chart(fig, use_container_width=True)
 
-    df_count = df_filtered.groupby(['MSZoning', 'YearBuilt', 'BldgType', 'GarageType])['SalePrice'].count()
+    df_count = df_filtered.groupby(['MSZoning', 'YearBuilt', 'BldgType', 'GarageType'])['SalePrice'].count()
     df_count = df_count.reset_index()
     df_count.columns = ['MSZoning',  'YearBuilt', 'BldgType', 'GarageType','Count']
 
