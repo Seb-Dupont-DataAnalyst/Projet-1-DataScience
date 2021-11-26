@@ -500,6 +500,7 @@ if choice == 'Fichier CSV' :
     st.title("")
     st.title("")
     st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
-
-    st.write(df_final.head())
+    st.title("")
+    st.title("")
+    st.write(df_final.head(10))
       
