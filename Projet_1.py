@@ -26,13 +26,13 @@ import streamlit as st
 
 st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    page_icon="📈", layout="wide",
-                   initial_sidebar_state="expanded",
+                   initial_sidebar_state="expanded")
                    
 
 
 df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train.csv")
 
-#df_test = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
+df_test = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
