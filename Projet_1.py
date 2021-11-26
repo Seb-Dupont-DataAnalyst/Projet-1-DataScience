@@ -321,7 +321,7 @@ if choice == "Tests d'hypothèse":
 
        st.plotly_chart(fig, use_container_width=True)
     
-       R = df[(df['MSZoning'] == 'RM' or df['MSZoning'] == 'RL' or df['MSZoning'] == 'RH')]['SalePrice']
+       R = df[(df['MSZoning'] == 'RM') | (df['MSZoning'] == 'RL') | (df['MSZoning'] == 'RH')]['SalePrice']
        FV = df[df['MSZoning'] == 'FV']['SalePrice']
 
        R_mean = round(np.mean(R),1)
