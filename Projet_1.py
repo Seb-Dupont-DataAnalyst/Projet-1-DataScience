@@ -162,17 +162,7 @@ if choice == "Analyse Exploratoire":
 
     st.plotly_chart(fig10, use_container_width=True)
 
-    fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
-    fig.update_yaxes(range= [0, 400000])
-    fig.update_traces(quartilemethod="exclusive")
-    fig.update_yaxes(title_text="<b>Sale Price")
-    fig.update_xaxes(title_text="<b>MS Zoning</b>")
-    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
-                    'paper_bgcolor': 'rgba(0,0,0,0)', })
-    fig.update_layout(title='<b>Prices by MS Zoning</b>',
-                       title_x=0.5, title_font_family="Verdana", showlegend=False)
 
-    st.plotly_chart(fig, use_container_width=True)
 
     fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
     fig.add_trace(go.Pie(labels=df_count_inf['BldgType'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
@@ -246,6 +236,17 @@ if choice == "Tests d'hypothèse":
 
     st.write("")
     st.write("")
+    fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
+    fig.update_yaxes(range= [0, 400000])
+    fig.update_traces(quartilemethod="exclusive")
+    fig.update_yaxes(title_text="<b>Sale Price")
+    fig.update_xaxes(title_text="<b>MS Zoning</b>")
+    fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                    'paper_bgcolor': 'rgba(0,0,0,0)', })
+    fig.update_layout(title='<b>Prices by MS Zoning</b>',
+                       title_x=0.5, title_font_family="Verdana", showlegend=False)
+
+    st.plotly_chart(fig, use_container_width=True)
     st.title("Tests d'hypothèse")
     st.title("")
     st.write("")
