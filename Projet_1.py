@@ -336,7 +336,26 @@ if choice == "Tests d'hypothèse":
        st.write("RM std value:",R_std)
        st.write("C std value:",FV_std)
  
+       ttest,pval = ttest_ind(FV,FR)
+
+       st.write("p-value",pval)
+
+       if pval <0.05:
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones FV est significativement différente de celle des maisons situées en zones R")
+       else:
+        st.subheader("We Accept the null hypothesis")
+               
+        ttest,pval = ttest_ind(FV,FR, alternative ='greater')
+
+        st.write("H0 : mean(R) = mean(FV)")
+        st.write("H1 : mean(R) > mean(FV)")
       
+        st.write("p-value",pval)
+
+        if pval <0.05:
+         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones FV est significativement supérieure à celle des maisons situées en zones R")
+        else:
+         st.subheader("We Accept the null hypothesis")
 
 
 if choice == "Prévisions de Prix":
