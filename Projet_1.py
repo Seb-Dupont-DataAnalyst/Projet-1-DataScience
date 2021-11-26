@@ -230,7 +230,9 @@ if choice == "Tests d'hypothèse":
     st.title("Tests d'hypothèse")
     st.title("")
     st.write("")
-
+    st.write("Utilisation d'un t-test")
+    st.write("Paramètres utilisés : Moyennes des maisons situées en zones RM et en zones C")
+    
     code = ''' RM = df[df['MSZoning'] == 'RM']['SalePrice']
     C = df[df['MSZoning'] == 'C (all)']['SalePrice']
 
