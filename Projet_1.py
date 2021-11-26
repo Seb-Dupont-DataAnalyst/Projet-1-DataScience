@@ -163,7 +163,7 @@ if choice == "Analyse Exploratoire":
     
     
 
-    col1, col2 = st.columns([1,4])
+    col1, col2 = st.columns([1,3])
 
     with col1:
       st.code(code, language = 'python')
@@ -185,20 +185,34 @@ if choice == "Analyse Exploratoire":
 
 
 
-    fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-    fig.add_trace(go.Pie(labels=df_count_inf['BldgType'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
+        code = ("""
+        1Fam    Single-family Detached
+        2FmCon  Two-family Conversion; originally built as one-family dwelling
+        Duplx   Duplex
+        TwnhsE  Townhouse End Unit
+        TwnhsI  Townhouse Inside Unit""")
+    
+    
+
+    col1, col2 = st.columns([1,3])
+
+    with col1:
+      st.code(code, language = 'python')
+    with col2:
+      fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+      fig.add_trace(go.Pie(labels=df_count_inf['BldgType'], values=df_count_inf['Count'], name="Before " + str(choix_années)), 1, 1)
         
-    fig.add_trace(go.Pie(labels=df_count['BldgType'], values=df_count['Count'], name="Since " + str(choix_années)),
+      fig.add_trace(go.Pie(labels=df_count['BldgType'], values=df_count['Count'], name="Since " + str(choix_années)),
                 1, 2)
-    fig.update_layout(title="<b>Building Type Sale Classification</b>",
+      fig.update_layout(title="<b>Building Type Sale Classification</b>",
                         title_x=0.5, title_font_family="Verdana")
-    fig.update_layout(
+      fig.update_layout(
         # Add annotations in the center of the donut pies.
         annotations=[dict(text='Before ' + str(choix_années), x=0.178, y=0.5, font_size=20, showarrow=False),
                     dict(text='Since ' + str(choix_années), x=0.82, y=0.5, font_size=20, showarrow=False)])
-    fig.update_traces(hole=.4)
+      fig.update_traces(hole=.4)
 
-    st.plotly_chart(fig, use_container_width=True)
+      st.plotly_chart(fig, use_container_width=True)
 
     fig = px.box(df, x="BldgType", y="SalePrice", color = "BldgType")
     fig.update_yaxes(range= [0, 400000])
