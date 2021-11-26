@@ -52,6 +52,10 @@ st.sidebar.title("Bonjour :bar_chart:")
 
 choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix'))
 
+if choice == "Accueil":
+  
+  st.write("Bonjour, bienvenue pour cette présentation...."
+
 
 if choice == "Analyse Exploratoire":
 
