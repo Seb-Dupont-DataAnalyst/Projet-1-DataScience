@@ -288,7 +288,7 @@ if choice == "Tests d'hypothèse":
       else:
         st.subheader("We Accept the null hypothesis")
                
-             ttest,pval = ttest_ind(RM,C, alternative ='greater')
+        ttest,pval = ttest_ind(RM,C, alternative ='greater')
 
        st.write("H0 : mean(RM) = mean(C)")
        st.write("H1 : mean(RM) > mean(C)")
