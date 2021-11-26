@@ -557,6 +557,12 @@ if choice == "Prévisions de Prix":
       df_viz = df_viz.sort_values(by='real')
       df_viz = df_viz.reset_index()  
       
+      st.title("")
+      st.title("")
+      st.markdown('<body class="p"Prévisions des Prix de Vente</body>', unsafe_allow_html=True)
+      st.title("")
+      st.title("")
+      
       fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
       fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
                       'paper_bgcolor': 'rgba(0,0,0,0)', })
