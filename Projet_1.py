@@ -54,6 +54,16 @@ st.sidebar.title("Bonjour :bar_chart:")
 
 choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
 
+if choice == "Accueil":
+
+    st.title("")
+  
+    st.write("Bonjour, bienvenue pour cette présentation....")
+    st.title("")
+    
+    st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
+    
+
 if choice == 'Présentation Générale':
   
   st.header("")
@@ -69,20 +79,7 @@ if choice == 'Présentation Générale':
   st.write("- 14 discrètes : nombre d'équipements (cuisines, chambres, salles de bains...)")
   st.write("- 20 continues : dimensions (surfaces)")
   st.write("Dataset original scindé en 2 datasets de taille égale, l'un d'entraînement, l'autre de test (sans les prix de vente).")
-
-
-if choice == "Accueil":
-
-    st.title("")
-  
-    st.write("Bonjour, bienvenue pour cette présentation....")
-    st.title("")
-    
-    st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg", width = 600)
-    
-     
-    
-    
+      
 
 if choice == "Analyse Exploratoire":
 
