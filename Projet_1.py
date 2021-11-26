@@ -29,11 +29,9 @@ st.set_page_config(page_title="Project 1 - Analysis and predictions",
                    initial_sidebar_state="expanded",
                    )
 
-link = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/0bb4023413687d608962772122a3c6b0744d8dd7/test.csv"
-df = pd.read_csv(link)
+df = pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train.csv")
 
-link2 = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/0bb4023413687d608962772122a3c6b0744d8dd7/test.csv"
-df_test =  pd.read_csv(link2)
+df_test =  pd.read_csv("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 
 st.markdown('<body class="title"> 📊 Project 1 - Analysis and predictions 📶</body>',
             unsafe_allow_html=True)
