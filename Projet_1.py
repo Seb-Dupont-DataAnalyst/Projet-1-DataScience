@@ -283,7 +283,7 @@ if choice == "Tests d'hypothèse":
       else:
         st.subheader("We Accept the null hypothesis")
         
-     if sub_choice == 'Test 2' :
+    if sub_choice == 'Test 2' :
       
         st.write("")
         st.write("")
