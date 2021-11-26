@@ -63,7 +63,7 @@ if choice == "Accueil":
     
     col1, col2 = st.columns(2)
     with col1:
-      st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg", width = 500)
+      st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg", width = 600)
     with col2:
       st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
     
