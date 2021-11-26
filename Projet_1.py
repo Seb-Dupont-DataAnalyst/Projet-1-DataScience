@@ -177,8 +177,8 @@ if choice == "Analyse Exploratoire":
                         title_x=0.5, title_font_family="Verdana")
       fig10.update_layout(
         # Add annotations in the center of the donut pies.
-        annotations=[dict(text='Before ' + str(choix_années), x=0.176, y=0.5, font_size=20, showarrow=False),
-                    dict(text='Since ' + str(choix_années), x=0.822, y=0.5, font_size=20, showarrow=False)])
+        annotations=[dict(text='Before ' + str(choix_années), x=0.17, y=0.5, font_size=20, showarrow=False),
+                    dict(text='Since ' + str(choix_années), x=0.825, y=0.5, font_size=20, showarrow=False)])
       fig10.update_traces(hole=.4)
 
       st.plotly_chart(fig10, use_container_width=True)
