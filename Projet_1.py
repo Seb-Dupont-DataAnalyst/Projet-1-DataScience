@@ -589,5 +589,12 @@ if choice == "Conclusion":
     st.title("")
     #st.markdown('<body class="p">Merci de votre attention, avez vous des questions?</body>', unsafe_allow_html=True)
     
-    st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg")
+    
+    col1, col2, col3 = st.columns([1,4,1])
+    with col1:
+      st.write("")
+    with col2:
+      st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg")
+    with col3:
+      st.write("")
       
