@@ -587,5 +587,7 @@ if choice == 'Fichier CSV' :
 if choice == "Conclusion":
     st.title("")
     st.title("")
-    st.markdown('<body class="p">Merci de votre attention, avez vous des questions?</body>', unsafe_allow_html=True)
+    #st.markdown('<body class="p">Merci de votre attention, avez vous des questions?</body>', unsafe_allow_html=True)
+    
+    st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg")
       
