@@ -290,7 +290,7 @@ if choice == "Tests d'hypothèse":
       st.write("")
       st.write('AFFIRMATION : "Le prix des maisons situées en zone résidentielle moyenne est plus élevé que celui des maisons situées en zones commerciales.')
       st.title("") 
-          code = ("""
+      code = ("""
       A   Agriculture
       C   Commercial
       FV  Floating Village Residential
