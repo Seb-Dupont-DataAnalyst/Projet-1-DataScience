@@ -54,8 +54,12 @@ choice = st.sidebar.selectbox("", ('Accueil', "Analyse Exploratoire", 'Corrélat
 
 if choice == "Accueil":
   
+    st.title("")
+  
     st.write("Bonjour, bienvenue pour cette présentation....")
-
+    st.title("")
+    
+    st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg")
 
 if choice == "Analyse Exploratoire":
 
