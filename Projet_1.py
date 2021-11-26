@@ -560,7 +560,7 @@ if choice == "Prévisions de Prix":
       fig = px.scatter(df_viz, x=df_viz.index, y=["predict","real"], title='Compararaison des prédictions avec les prix réels', labels={"_index":"houses","value":"saleprice","variable":"Saleprice"})
       fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
                       'paper_bgcolor': 'rgba(0,0,0,0)', })
-      st.write(fig)
+      st.plotly_chart(fig, use_container_width=True)
       
 if choice == 'Fichier CSV' : 
     st.title("")
