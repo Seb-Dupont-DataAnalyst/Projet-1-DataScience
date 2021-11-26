@@ -381,4 +381,4 @@ if choice == "Prévisions de Prix":
 
     st.plotly_chart(fig, use_container_width=True)
     st.header("")
-    st.write("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible"
+    st.write("Choix du modèle Gradient Boosting Regressor qui présente les meilleurs scores, pas d'overtfitting et la RMSE la plus faible")
