@@ -152,14 +152,14 @@ if choice == "Analyse Exploratoire":
     df_count_inf.columns = ['MSZoning',  'YearBuilt', 'BldgType','Count']
     
     code = ("""
-      A    Agriculture
-      C    Commercial
-      FV   Floating Village Residential
-      I    Industrial
-      RH   Residential High Density
-      RL   Residential Low Density
-      RP   Residential Low Density Park
-      RM   Residential Medium Density""")
+      A   Agriculture
+      C   Commercial
+      FV  Floating Village Residential
+      I   Industrial
+      RH  Residential High Density
+      RL  Residential Low Density
+      RP  Residential Low Density Park
+      RM  Residential Medium Density""")
     
     
 
@@ -326,7 +326,7 @@ if choice == "Tests d'hypothèse":
        st.markdown("<body class='p'>Tests d'hypothèse 2</body>", unsafe_allow_html=True)
        st.title("")
        st.write("")
-       st.write('SUPPOSITION : "Le prix des maisons situées en dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."')
+       st.write('SUPPOSITION : "Le prix des maisons situées dans les villages flottants est plus élevé que celui des maisons situées en zone résidentielle."')
        fig = px.box(df, x="MSZoning", y="SalePrice", color = "MSZoning")
        fig.update_yaxes(range= [0, 400000])
        fig.update_traces(quartilemethod="exclusive")
@@ -359,7 +359,7 @@ if choice == "Tests d'hypothèse":
        st.write("p-value",pval)
 
        if pval <0.05:
-        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones FV est significativement différente de celle des maisons situées en zones R")
+        st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement différente de celle des maisons situées en zones R")
        else:
         st.subheader("We Accept the null hypothesis")
                
@@ -371,7 +371,7 @@ if choice == "Tests d'hypothèse":
        st.write("p-value",pval)
 
        if pval <0.05:
-         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les zones FV est significativement supérieure à celle des maisons situées en zones R")
+         st.subheader("Rejet de l'hypothèse nulle : la moyenne des prix des maisons situées dans les villages flottants est significativement supérieure à celle des maisons situées en zones R")
        else:
          st.subheader("We Accept the null hypothesis")
 
