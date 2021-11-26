@@ -54,7 +54,7 @@ def transfo(df):
 
 st.sidebar.title("Bonjour :bar_chart:")
 
-choice = st.sidebar.radio("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
+choice = st.sidebar.radio("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV', 'Conclusion'))
 
 if choice == "Accueil":
 
@@ -582,4 +582,10 @@ if choice == 'Fichier CSV' :
     st.write(df_final.head(10))
     st.write('prix de vente moyen:',round(df_final['SalePrice'].mean(),1))
     st.write('écart type:',round(df_final['SalePrice'].std(),1))
+    
+    
+if choice == "Conclusion":
+    st.title("")
+    st.title("")
+    st.markdown('<body class="p">Merci de votre attention, avez vous des questions?</body>', unsafe_allow_html=True)
       
