@@ -55,8 +55,12 @@ st.sidebar.title("Bonjour :bar_chart:")
 choice = st.sidebar.selectbox("", ('Accueil', 'Présentation Générale', "Analyse Exploratoire", 'Corrélation', "Tests d'hypothèse",'Prévisions de Prix', 'Fichier CSV'))
 
 if choice == 'Présentation Générale':
+  
+  
   st.title('Présentation Générale')
   st.title("")
+  st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
+  st.header("")
   st.write("Dataset sur les ventes des propriétés immobilières individuelles de la ville d'Ames dans l'Iowa entre 2006 et 2010.")
   st.write("2919 lignes et 80 variables.")
   st.write("Parmi les variables :")
@@ -74,11 +78,9 @@ if choice == "Accueil":
     st.write("Bonjour, bienvenue pour cette présentation....")
     st.title("")
     
-    col1, col2 = st.columns(2)
-    with col1:
-      st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg", width = 600)
-    with col2:
-      st.image("http://www.usbeacon.com/images/Iowa/maps/Ames_o.gif", width = 600)
+    st.image("https://miro.medium.com/max/1400/1*3zdEDGlAT5WEpOEbUj_luA.jpeg", width = 600)
+    
+     
     
     
 
