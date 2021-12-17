@@ -196,18 +196,18 @@ if week == "Accueil":
     space(1)
 
    
-    col1, col2, col3 = st.columns(3)
-    #cols = st.columns(3)
-    with col1:
-    #with cols[0]:
+    
+    cols = st.columns(3)
+    
+    with cols[0]:
         st.markdown("La base de données comprend les éléments suivants : ")
-    with col2:
-    #with cols[1]:
+    
+    with cols[1]:
         st.markdown(f'''<p class="value">2919</p>
                         <p class="titre">Maisons répertoriées</p>
                      ''', unsafe_allow_html=True)
-    with col3:
-    #with cols[2]:
+    
+    with cols[2]:
         st.markdown(f'''<p class="value">80</p>
                         <p class="titre">Caractéristiques différentes</p>
                      ''', unsafe_allow_html=True)
