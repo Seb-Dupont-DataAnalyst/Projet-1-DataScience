@@ -910,16 +910,16 @@ if week == 'Semaine 2':
         
         def transfo(df):
 
-          dico = { 'Po' : 0, 'Fa' : 1, 'TA' : 2,  'Gd' : 3,'Ex' : 4}
-          df['KitchenQual'] = df['KitchenQual'].map(dico)
-          df['ExterQual'] = df['ExterQual'].map(dico)
-          df2 = pd.get_dummies(df[['Neighborhood','GarageType']])
-          result= pd.concat([df2,df[['LotArea', 'LotFrontage', 'BsmtFinSF1', 'BsmtUnfSF',
-                                     'LotConfig', 'LotShape',
-                                     'OverallQual', 'GrLivArea', 'ExterQual', 
-                                     'KitchenQual', 'GarageCars','GarageArea',
-                                     'TotalBsmtSF', '1stFlrSF','FullBath','TotRmsAbvGrd',
-                                     'YearBuilt','YearRemodAdd','Id', 'SalePrice']]], axis=1)
+            dico = { 'Po' : 0, 'Fa' : 1, 'TA' : 2,  'Gd' : 3,'Ex' : 4}
+            df['KitchenQual'] = df['KitchenQual'].map(dico)
+            df['ExterQual'] = df['ExterQual'].map(dico)
+            df2 = pd.get_dummies(df[['Neighborhood','GarageType']])
+            result= pd.concat([df2,df[['LotArea', 'LotFrontage', 'BsmtFinSF1', 'BsmtUnfSF',
+                                       'LotConfig', 'LotShape',
+                                       'OverallQual', 'GrLivArea', 'ExterQual', 
+                                       'KitchenQual', 'GarageCars','GarageArea',
+                                       'TotalBsmtSF', '1stFlrSF','FullBath','TotRmsAbvGrd',
+                                       'YearBuilt','YearRemodAdd','Id', 'SalePrice']]], axis=1)
 
           return(result)
       
