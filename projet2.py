@@ -1067,6 +1067,8 @@ if week == 'Semaine 2':
         fig = px.box(data, x="clusters", y="SalePrice", color="clusters")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
                                    'paper_bgcolor': 'rgba(0,0,0,0)', })
+        fig.update_layout(title='<b>Clusters Boxplot</b>',
+                          title_x=0.5, title_font_family="Verdana", showlegend=False)
         #fig.update_yaxes(range=[0, 400000])
 
         st.plotly_chart(fig, use_container_width=True)
