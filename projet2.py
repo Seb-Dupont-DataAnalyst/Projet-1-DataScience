@@ -1088,6 +1088,8 @@ if week == 'Semaine 2':
                                    'paper_bgcolor': 'rgba(0,0,0,0)', })
         fig.update_layout(title='<b>Clusters size</b>',
                           title_x=0.5, title_font_family="Verdana", showlegend=False)
+        fig.update_yaxes(title = "Number of Houses")
+        fig.update_xaxes(title = "Clusters")
         st.plotly_chart(fig, use_container_width=True)
         
         
