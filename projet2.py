@@ -1039,7 +1039,8 @@ if week == 'Semaine 2':
         space(1)
         st.markdown('<body class="p">Groupez les tous !</body>', unsafe_allow_html=True)
         space(2)
-
+        st.write("Utilisation d'un modèle de clustering Birch")
+        space(1)
         data = load_df("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train_clusters.csv")
         X = data.drop(columns = ['ExterQual', 'KitchenQual'])
         
