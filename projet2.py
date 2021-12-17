@@ -194,7 +194,7 @@ if week == "Accueil":
                 "alors que pour une autre moitié, le prix devra être prédit.")
     space(1)
 
-    cols = st.beta_columns(3)
+    cols = st.columns(3)
     with cols[0]:
         st.markdown("La base de données comprend les éléments suivants : ")
 
@@ -208,7 +208,7 @@ if week == "Accueil":
                      ''', unsafe_allow_html=True)
 
     space(1)
-    cols = st.beta_columns(4)
+    cols = st.columns(4)
     with cols[0]:
         value(23)
         st.markdown("**nominales** (types de logements, de garages, etc)")
@@ -294,7 +294,7 @@ if week == 'Semaine 1':
 
 
 
-        col1, col2 = st.beta_columns([1,3])
+        col1, col2 = st.columns([1,3])
         with col1:
           st.code(code, language='python')
         with col2:
@@ -324,7 +324,7 @@ if week == 'Semaine 1':
 
 
 
-        col1, col2 = st.beta_columns([1,3])
+        col1, col2 = st.columns([1,3])
 
         with col1:
           st.code(code, language = 'python')
@@ -668,7 +668,7 @@ if week == 'Semaine 1':
         st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
 
         space(2)
-        cols = st.beta_columns(3)
+        cols = st.columns(3)
         with cols[0]:
             st.dataframe(df_final.head(10))
         with cols[1]:
@@ -683,7 +683,7 @@ if week == 'Semaine 1':
     if choice == "Conclusion":
         space(2)
 
-        col1, col2, col3 = st.beta_columns([1,4,1])
+        col1, col2, col3 = st.columns([1,4,1])
         with col2:
           st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
 
@@ -724,7 +724,7 @@ if week == 'Semaine 2':
                                           bgcolor='rgba(0,0,0,0)',
                                           font=dict(size=12)))
 
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Une distribution Normale')
             st.plotly_chart(fig_norm, use_container_width=True)
@@ -791,7 +791,7 @@ if week == 'Semaine 2':
                                           font=dict(size=12)))
 
         space(1)
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Surface du terrain')
             st.plotly_chart(fig_lotarea, use_container_width=True)
@@ -799,7 +799,7 @@ if week == 'Semaine 2':
             st.subheader("Largeur de l'accès à la route")
             st.plotly_chart(fig_lotfront, use_container_width=True)
         space(1)
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader("Surface au Rez-de-Chaussée")
             st.plotly_chart(fig_grliv, use_container_width=True)
@@ -807,7 +807,7 @@ if week == 'Semaine 2':
             st.subheader('Surface du 1er étage')
             st.plotly_chart(fig_florsf, use_container_width=True)
         space(1)
-        cols = st.beta_columns(3)
+        cols = st.columns(3)
         with cols[0]:
             st.subheader('Surface de la cave')
             st.plotly_chart(fig_totbsmt, use_container_width=True)
@@ -826,7 +826,7 @@ if week == 'Semaine 2':
             temp[col] = temp[col].astype(str)
 
         space(1)
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Qualité Générale')
             fig = discret_layout(px.histogram(temp, x="OverallQual",
@@ -842,7 +842,7 @@ if week == 'Semaine 2':
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Qualité de la Cuisine')
             fig = discret_layout(px.histogram(temp, x="KitchenQual",
@@ -860,7 +860,7 @@ if week == 'Semaine 2':
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Nombre de Salles de Bain')
             fig = discret_layout(px.histogram(df, x="FullBath",
@@ -878,7 +878,7 @@ if week == 'Semaine 2':
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.beta_columns(2)
+        cols = st.columns(2)
         with cols[0]:
             st.subheader('Année de Construction')
             fig = discret_layout(px.histogram(temp, x="YearBuilt",
