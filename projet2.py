@@ -908,7 +908,7 @@ if week == 'Semaine 2':
         st.markdown('<body class="p">Groupez les tous !</body>', unsafe_allow_html=True)
         space(2)
         
-        data = transfo(df)
+        
         X = data
         
         #BP = Birch(threshold=0.0001)
