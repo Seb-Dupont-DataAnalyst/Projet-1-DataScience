@@ -966,7 +966,7 @@ if week == 'Semaine 2':
         Elbow_M = KElbowVisualizer(BP, k=10)
         Elbow_M.fit(X)
         #st.show(Elbow_M)
-        st.plotly_chart(Elbow_M, use_container_width=True)
+        st.pyplot(Elbow_M)
         
         # define the model
         model = Birch(threshold=0.01, n_clusters=5)
