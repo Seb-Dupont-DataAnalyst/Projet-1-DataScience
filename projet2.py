@@ -1036,7 +1036,7 @@ if week == 'Semaine 2':
                                       yanchor="bottom",
                                       xanchor="right",
                                       bgcolor='rgba(0,0,0,0)',
-                                      papercolor='rgba(0,0,0,0)',
+                                      paper_bgcolor='rgba(0,0,0,0)',
                                       font=dict(size=12)))
         fig.update_yaxes(title = "Scores")
         
