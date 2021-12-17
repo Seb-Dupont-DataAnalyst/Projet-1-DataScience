@@ -805,6 +805,8 @@ if week == 'Semaine 2':
 
         fig = px.bar(features, x="score", y="feature", orientation='h')
         fig.update_traces(marker_color='#048b9a', width=0.3)
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                           'paper_bgcolor': 'rgba(0,0,0,0)', })
         st.plotly_chart(fig, use_container_width=True)
 
     if choice == "Distributions":
