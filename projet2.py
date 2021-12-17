@@ -961,7 +961,7 @@ if week == 'Semaine 2':
         
         BP = Birch(threshold=0.0001)
 
-        img = https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/Elbow%20Birch.png?raw=true
+        img = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/Elbow%20Birch.png?raw=true"
         st.image(img)
         # Quick examination of elbow method to find numbers of clusters to make.
         #print('Elbow Method to determine the number of clusters to be formed:')
