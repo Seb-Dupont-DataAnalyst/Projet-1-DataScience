@@ -932,7 +932,7 @@ if week == 'Semaine 2':
 
         st.plotly_chart(fig, use_container_width=True)
         
-        clusters = data.groupby(by=['cluster_birch']).count()['SalePrice']
+        clusters = data.groupby(by=['clusters']).count()['SalePrice']
         st.write(clusters)
         
         fig = px.scatter(data, x="GrLivArea", y="SalePrice", color="clusters")
