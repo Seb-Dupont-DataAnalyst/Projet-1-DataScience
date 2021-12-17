@@ -1133,7 +1133,7 @@ if week == 'Semaine 2':
         fig.update_layout(title='<b>Clusters</b>',
                           title_x=0.5, title_font_family="Verdana", showlegend=False)
         #fig.update_yaxes(range=[0, 700000])
-        #fig.update_xaxes(range=[0, 4000])
+        fig.update_xaxes(range=[0, 100000])
         fig.update(layout_coloraxis_showscale=False)
         st.plotly_chart(fig, use_container_width=True)
         
