@@ -1036,9 +1036,10 @@ if week == 'Semaine 2':
                                       yanchor="bottom",
                                       xanchor="right",
                                       bgcolor='rgba(0,0,0,0)',
-                                      paper_bgcolor='rgba(0,0,0,0)',
                                       font=dict(size=12)))
         fig.update_yaxes(title = "Scores")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                           'paper_bgcolor': 'rgba(0,0,0,0)', })
         
         st.plotly_chart(fig, use_container_width=True)
 
