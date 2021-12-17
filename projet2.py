@@ -1117,7 +1117,7 @@ if week == 'Semaine 2':
         fig.update(layout_coloraxis_showscale=False)
         st.plotly_chart(fig, use_container_width=True)
         
-      if choice == "Conclusion":
+    if choice == "Conclusion":
         space(2)
 
         col1, col2, col3 = st.columns([1,4,1])
