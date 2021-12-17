@@ -1118,11 +1118,11 @@ if week == 'Semaine 2':
         st.plotly_chart(fig, use_container_width=True)
         
     if choice == "Conclusion":
-        space(2)
+      space(2)
 
-        col1, col2, col3 = st.columns([1,4,1])
-        with col2:
-          st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
+      col1, col2, col3 = st.columns([1,4,1])
+      with col2:
+        st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
 
         
         
