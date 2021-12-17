@@ -750,7 +750,7 @@ if week == 'Semaine 1':
           st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
 
 if week == 'Semaine 2':
-    choice = st.sidebar.radio("Semaine 2", ("Previously", "Distributions", "Machine Learning", "Clustering"))
+    choice = st.sidebar.radio("Semaine 2", ("Previously", "Distributions", "Machine Learning", "Clustering", "Conclusion"))
 
     if choice == "Previously":
         space(1)
@@ -1116,6 +1116,13 @@ if week == 'Semaine 2':
         fig.update_xaxes(range=[0, 4000])
         fig.update(layout_coloraxis_showscale=False)
         st.plotly_chart(fig, use_container_width=True)
+        
+      if choice == "Conclusion":
+        space(2)
+
+        col1, col2, col3 = st.columns([1,4,1])
+        with col2:
+          st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
 
         
         
