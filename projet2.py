@@ -965,7 +965,7 @@ if week == 'Semaine 2':
         #print('Elbow Method to determine the number of clusters to be formed:')
         Elbow_M = KElbowVisualizer(BP, k=10)
         Elbow_M.fit(X)
-        Elbow_M.show()
+        st.show(Elbow_M)
         
         # define the model
         model = Birch(threshold=0.01, n_clusters=5)
