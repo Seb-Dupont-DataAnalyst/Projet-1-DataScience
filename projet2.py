@@ -699,22 +699,22 @@ if week == 'Semaine 2':
 
         space(2)
         st.title("La base de travail")
-        col1, col2, col3 = st.columns(3)
-        #cols = st.columns(3)
-        with col1:
-          st.subheader("Le nettoyage des données")
-          st.image('https://static.thenounproject.com/png/2301589-200.png',
+        
+        cols = st.columns(3)
+        with cols[0]:
+            st.subheader("Le nettoyage des données")
+            st.image('https://static.thenounproject.com/png/2301589-200.png',
                      width=200)
-        with col2:
-          st.subheader("L'étude des corrélations")
-          space(1)
-          st.write(' ')
-          st.image('https://www.pngkit.com/png/full/231-2316802_full-database-search-comments-database-search-icon-free.png',
+        with cols[1]:
+            st.subheader("L'étude des corrélations")
+            space(1)
+            st.write(' ')
+            st.image('https://www.pngkit.com/png/full/231-2316802_full-database-search-comments-database-search-icon-free.png',
                      width=130)
-        with col3:
-          st.subheader("Le choix des variables")
-          st.header(" ")
-          st.image(
+        with cols[2]:
+            st.subheader("Le choix des variables")
+            st.header(" ")
+            st.image(
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuaDsQDYiaYPoJL2MmM9I5e1JnvLJH9M9SEglYfjkr6f5_RJnGQcDj1DGITrOILO-ssfk&usqp=CAU',
                 width=170)
 
