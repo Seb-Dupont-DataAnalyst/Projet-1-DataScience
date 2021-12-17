@@ -818,29 +818,28 @@ if week == 'Semaine 2':
         fig_grliv = ff.create_distplot([data['GrLivArea'], grliv_dist[grliv_dist > 0]],
                                        ['GrLivArea', 'Chi2 distribution'],
                                        show_hist=False)
-        fig_totbsmt = ff.create_distplot([data['TotalBsmtSF'], totbsmt_dist[totbsmt_dist > 0]],
-                                         ['TotalBsmtSF', 'Johnsonsu distribution'],
-                                         show_hist=False)
+        #fig_totbsmt = ff.create_distplot([data['TotalBsmtSF'], totbsmt_dist[totbsmt_dist > 0]],
+                                         #['TotalBsmtSF', 'Johnsonsu distribution'],
+                                         #show_hist=False)
         fig_ggeaera = ff.create_distplot([data['GarageArea'], ggeaera_dist],
                                          ['GarageArea', 'Laplace distribution'],
                                          show_hist=False)
         fig_florsf = ff.create_distplot([data['1stFlrSF'], florsf_dist],
                                         ['1stFlrSF', 'Skewnorm distribution'],
                                         show_hist=False)
-        fig_bsmtfin = ff.create_distplot([data['BsmtFinSF1'], bsmtfin_dist[bsmtfin_dist < 1000]],
-                                         ['BsmtFinSF1', 'levy distribution'],
-                                         show_hist=False)
-        fig_bsmtnofin = ff.create_distplot([data['BsmtUnfSF'], bsmtnofin_dist],
-                                           ['BsmtUnfSF', 'chi distribution'],
-                                           show_hist=False)
+        #fig_bsmtfin = ff.create_distplot([data['BsmtFinSF1'], bsmtfin_dist[bsmtfin_dist < 1000]],
+                                         #['BsmtFinSF1', 'levy distribution'],
+                                         #show_hist=False)
+        #fig_bsmtnofin = ff.create_distplot([data['BsmtUnfSF'], bsmtnofin_dist],
+                                           #['BsmtUnfSF', 'chi distribution'],
+                                           #show_hist=False)
         fig_lotfront = ff.create_distplot([data['LotFrontage'], lotfront_dist[lotfront_dist > 0]],
                                           ['LotFrontage', 't distribution'],
                                           show_hist=False)
         fig_lotarea = ff.create_distplot([data['LotArea'], lotarea_dist[lotarea_dist > 0]],
                                          ['LotArea', 'tukeylambda distribution'],
                                          show_hist=False)
-        for fig in [fig_grliv, fig_totbsmt, fig_ggeaera, fig_florsf,
-                    fig_bsmtfin, fig_bsmtnofin, fig_lotfront, fig_lotarea]:
+        for fig in [fig_grliv, fig_ggeaera, fig_florsf, fig_lotfront, fig_lotarea]:
             fig.update_layout(font_family='IBM Plex Sans',
                               yaxis=dict(visible=False),
                               uniformtext_minsize=10, uniformtext_mode='hide',
@@ -869,16 +868,16 @@ if week == 'Semaine 2':
             st.subheader('Surface du 1er étage')
             st.plotly_chart(fig_florsf, use_container_width=True)
         space(1)
-        cols = st.columns(3)
-        with cols[0]:
-            st.subheader('Surface de la cave')
-            st.plotly_chart(fig_totbsmt, use_container_width=True)
-        with cols[1]:
-            st.subheader('Surface de la cave habitable')
-            st.plotly_chart(fig_bsmtfin, use_container_width=True)
-        with cols[2]:
-            st.subheader('Surface de la cave non habitable')
-            st.plotly_chart(fig_bsmtnofin, use_container_width=True)
+        #cols = st.columns(3)
+        #with cols[0]:
+            #st.subheader('Surface de la cave')
+            #st.plotly_chart(fig_totbsmt, use_container_width=True)
+        #with cols[1]:
+         #   st.subheader('Surface de la cave habitable')
+          #  st.plotly_chart(fig_bsmtfin, use_container_width=True)
+        #with cols[2]:
+         #   st.subheader('Surface de la cave non habitable')
+          #  st.plotly_chart(fig_bsmtnofin, use_container_width=True)
 
         space(2)
         st.title('Des données pas si discrètes')
