@@ -56,7 +56,6 @@ st.markdown("""
 
 # FONCTION #
 
-@st.cache(allow_output_mutation=True)
 def load_df(url):
     return pd.read_csv(url)
 
@@ -68,8 +67,8 @@ def transfo(df):
     """
     # Transformation des catégories en données numériques
     dico = {'Po': 0, 'Fa': 1, 'TA': 2,  'Gd': 3, 'Ex': 4}
-    df['KitchenQual'] = df['KitchenQual'].map(dico)
     df['ExterQual'] = df['ExterQual'].map(dico)
+    df['KitchenQual'] = df['KitchenQual'].map(dico)
     df2 = pd.get_dummies(df[['Neighborhood', 'GarageType']])
 
     data = pd.concat(
@@ -139,7 +138,7 @@ def discret_layout(fig):
     :return: a fig with the good layout
     """
     fig.update_layout(font_family='IBM Plex Sans', uniformtext_minsize=10, uniformtext_mode='hide',
-                      xaxis=dict(visible=False),
+                      xaxis=dict(title=None),
                       margin=dict(l=10, r=10, b=10, t=10))
     return fig
 
@@ -196,7 +195,7 @@ if week == "Accueil":
                 "alors que pour une autre moitié, le prix devra être prédit.")
     space(1)
 
-    cols = st.columns(3)
+    cols = st.beta_columns(3)
     with cols[0]:
         st.markdown("La base de données comprend les éléments suivants : ")
 
@@ -210,7 +209,7 @@ if week == "Accueil":
                      ''', unsafe_allow_html=True)
 
     space(1)
-    cols = st.columns(4)
+    cols = st.beta_columns(4)
     with cols[0]:
         value(23)
         st.markdown("**nominales** (types de logements, de garages, etc)")
@@ -296,7 +295,7 @@ if week == 'Semaine 1':
 
 
 
-        col1, col2 = st.columns([1,3])
+        col1, col2 = st.beta_columns([1,3])
         with col1:
           st.code(code, language='python')
         with col2:
@@ -326,7 +325,7 @@ if week == 'Semaine 1':
 
 
 
-        col1, col2 = st.columns([1,3])
+        col1, col2 = st.beta_columns([1,3])
 
         with col1:
           st.code(code, language = 'python')
@@ -670,7 +669,7 @@ if week == 'Semaine 1':
         st.markdown('<body class="p">Fichier CSV</body>', unsafe_allow_html=True)
 
         space(2)
-        cols = st.columns(3)
+        cols = st.beta_columns(3)
         with cols[0]:
             st.dataframe(df_final.head(10))
         with cols[1]:
@@ -685,21 +684,77 @@ if week == 'Semaine 1':
     if choice == "Conclusion":
         space(2)
 
-        col1, col2, col3 = st.columns([1,4,1])
+        col1, col2, col3 = st.beta_columns([1,4,1])
         with col2:
           st.image("https://media.makeameme.org/created/merci-de-votre-5bd62e.jpg", width=800)
 
 if week == 'Semaine 2':
-    choice = st.sidebar.radio("Semaine 2", ("Distributions", "Machine Learning", "Clustering"))
+    choice = st.sidebar.radio("Semaine 2", ("Previously", "Distributions", "Machine Learning", "Clustering"))
 
     data = transfo(df)
+
+    if choice == "Previously":
+        space(1)
+        st.markdown('''<body class="p">Previoulsy on the AMES'PROJECT !</body>''', unsafe_allow_html=True)
+
+        space(2)
+        st.title("La base de travail")
+        cols = st.beta_columns(3)
+        with cols[0]:
+            st.subheader("Le nettoyage des données")
+            st.image('https://static.thenounproject.com/png/2301589-200.png',
+                     width=200)
+        with cols[1]:
+            st.subheader("L'étude des corrélations")
+            space(1)
+            st.write(' ')
+            st.image('https://www.pngkit.com/png/full/231-2316802_full-database-search-comments-database-search-icon-free.png',
+                     width=130)
+        with cols[2]:
+            st.subheader("Le choix des variables")
+            st.header(" ")
+            st.image(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuaDsQDYiaYPoJL2MmM9I5e1JnvLJH9M9SEglYfjkr6f5_RJnGQcDj1DGITrOILO-ssfk&usqp=CAU',
+                width=170)
+
+        space(2)
+        st.title("Table des corrélations")
+
+        pmatrix = df.corr().nlargest(13, columns="SalePrice")["SalePrice"].index
+        coeffc=np.corrcoef(df[pmatrix].values.T)
+
+        fig, axes = plt.subplots(figsize=(10, 5))
+        sns.heatmap(coeffc, annot=True, yticklabels=pmatrix.values,
+                    xticklabels=pmatrix.values, vmin=0, vmax=1, cmap="YlGnBu")
+        st.write(fig)
+
+        space(2)
+        st.title("Le poids des variables dans le Machine Learning")
+
+        features = pd.DataFrame([['LotArea', 260],
+                                 ['GrLivArea', 205],
+                                 ['TotalBsmtSf', 180],
+                                 ['GarageArea', 155],
+                                 ['1stFlrSF', 148],
+                                 ['LotFrontage', 140],
+                                 ['BsmtFinSF1', 125],
+                                 ['YearBuilt', 120],
+                                 ['BsmtUnfSF', 120],
+                                 ['YearRemodAdd', 100]],
+                                columns=['feature', 'score']).sort_values('score')
+
+        fig = px.bar(features, x="score", y="feature", orientation='h')
+        fig.update_traces(marker_color='#048b9a', width=0.3)
+        st.plotly_chart(fig, use_container_width=True)
 
     if choice == "Distributions":
         space(1)
         st.markdown('<body class="p">Distribuons les Distributions !</body>', unsafe_allow_html=True)
 
         space(1)
-        st.markdown("Les distributions ont ")
+        st.markdown("En statistique, *la distribution statistique* ou *distribution des fréquences*, est un tableau "
+                    "qui associe des classes de valeurs obtenues lors d'une expérience à leurs fréquences d'apparition."
+                    " Ce tableau de valeurs est modélisé en théorie des probabilités par une loi de probabilité")
 
         space(2)
         st.title('Pourquoi parler de distribution ?')
@@ -726,7 +781,7 @@ if week == 'Semaine 2':
                                           bgcolor='rgba(0,0,0,0)',
                                           font=dict(size=12)))
 
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader('Une distribution Normale')
             st.plotly_chart(fig_norm, use_container_width=True)
@@ -793,7 +848,7 @@ if week == 'Semaine 2':
                                           font=dict(size=12)))
 
         space(1)
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader('Surface du terrain')
             st.plotly_chart(fig_lotarea, use_container_width=True)
@@ -801,7 +856,7 @@ if week == 'Semaine 2':
             st.subheader("Largeur de l'accès à la route")
             st.plotly_chart(fig_lotfront, use_container_width=True)
         space(1)
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader("Surface au Rez-de-Chaussée")
             st.plotly_chart(fig_grliv, use_container_width=True)
@@ -809,7 +864,7 @@ if week == 'Semaine 2':
             st.subheader('Surface du 1er étage')
             st.plotly_chart(fig_florsf, use_container_width=True)
         space(1)
-        cols = st.columns(3)
+        cols = st.beta_columns(3)
         with cols[0]:
             st.subheader('Surface de la cave')
             st.plotly_chart(fig_totbsmt, use_container_width=True)
@@ -828,7 +883,7 @@ if week == 'Semaine 2':
             temp[col] = temp[col].astype(str)
 
         space(1)
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader('Qualité Générale')
             fig = discret_layout(px.histogram(temp, x="OverallQual",
@@ -844,7 +899,7 @@ if week == 'Semaine 2':
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader('Qualité de la Cuisine')
             fig = discret_layout(px.histogram(temp, x="KitchenQual",
@@ -862,25 +917,29 @@ if week == 'Semaine 2':
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
+        temp_bis= df[['FullBath', 'GarageCars']]
+        temp_bis['FullBath'] = temp_bis['FullBath'].astype(str)
+        temp_bis['GarageCars'] = temp_bis['GarageCars'].astype(str)
+
         with cols[0]:
             st.subheader('Nombre de Salles de Bain')
-            fig = discret_layout(px.histogram(df, x="FullBath",
+            fig = discret_layout(px.histogram(temp_bis, x="FullBath",
                                               marginal="box",
-                                              category_orders=dict(OverallQual=[0, 1, 2, 3])))
+                                              category_orders=dict(FullBath=['0', '1', '2', '3'])))
             fig.update_layout(font_family='IBM Plex Sans', uniformtext_minsize=10, uniformtext_mode='hide',
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
         with cols[1]:
             st.subheader('Nombre de parkings')
-            fig = discret_layout(px.histogram(df, x="GarageCars",
+            fig = discret_layout(px.histogram(temp_bis, x="GarageCars",
                                               marginal="box",
-                                              category_orders=dict(OverallQual=[0, 1, 2, 3, 4])))
+                                              category_orders=dict(GarageCars=['0', '1', '2', '3', '4'])))
             fig.update_layout(font_family='IBM Plex Sans', uniformtext_minsize=10, uniformtext_mode='hide',
                               margin=dict(l=10, r=10, b=10, t=10))
             st.plotly_chart(fig, use_container_width=True)
 
-        cols = st.columns(2)
+        cols = st.beta_columns(2)
         with cols[0]:
             st.subheader('Année de Construction')
             fig = discret_layout(px.histogram(temp, x="YearBuilt",
@@ -898,10 +957,83 @@ if week == 'Semaine 2':
 
     if choice == "Machine Learning":
         space(1)
-        st.markdown('<body class="p">To Be Parametric or Not to Be...</body>', unsafe_allow_html=True)
+        st.markdown('<body class="p">To Be or Not to Be Parametric...</body>', unsafe_allow_html=True)
 
         space(1)
-        st.text('Quel Modèle de Machine Learning ? Telle est la question')
+        st.markdown("""
+                    Les données sont passées au travers d'un outil de machine learning pour prédire les catégories 
+                    de prix. Nous avons scindé les prix en tranches de *50 000€* et avons entrainé nos modèles dessus.
+                    """)
+
+        space(1)
+        st.header("Deux familles de modèles")
+        space(1)
+        cols = st.beta_columns(2)
+        with cols[0]:
+            st.subheader('Modèle Paramétrique :')
+            st.markdown("""
+                C'est un modèle d'apprentissage qui résume les données à un **ensemble de paramètres de taille fixe** 
+                (indépendant du nombre d'exemples d'apprentissage). 
+                
+                Quelle que soit la quantité de données que vous  soumettez à un modèle paramétrique, 
+                il ne changera pas d'avis sur le nombre de paramètres dont il a besoin.
+                
+                *- Artificial Intelligence: A Modern Approach, page 737*
+                        """)
+        with cols[1]:
+            st.subheader('Modèle Non Paramétrique :')
+            st.markdown("""
+                        Les modèles non-paramétriques **ne font pas d'hypothèses fortes sur la forme de la donnée**. 
+                        Ne faisant pas d'hypothèse sur la donnée, le modèle va cherchent à s'adapter au mieux aux 
+                        données d'apprentissage en construisant une cartographie par itération,
+                        tout en conservant une capacité de généralisation aux données non vues. 
+                        
+                        En tant que telles, elles sont capables d'ajuster un grand nombre de formes de données.
+                        
+                        *— Artificial Intelligence: A Modern Approach, page 757*           
+                        """)
+
+        space(2)
+        st.header('Quel Modèle de Machine Learning ? Telle est la question')
+
+        model_Param = pd.DataFrame([['MultinomialNB', 0.273972602739726],
+                                    ['Perceptron', 0.3972602739726027],
+                                    ['LogisticRegression', 0.5041095890410959],
+                                    ['LinearDiscriminantAnalysis', 0.5534246575342465],
+                                    ['GaussianNB', 0.5753424657534246]],
+                                   columns=['model', 'score'])
+
+        model_noParam = pd.DataFrame([['KNeighbors', 0.5150684931506849],
+                                      ['DecisionTree', 0.5972602739726027],
+                                      ['RandomForest', 0.6438356164383562],
+                                      ['GradientBoosting', 0.6575342465753424],
+                                      ['SVR', 0.7556555106068537]],
+                                     columns=['model', 'score'])
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=model_Param.index,
+                                 y=model_Param.score,
+                                 text=model_Param.model,
+                                 mode='lines+markers+text',
+                                 name='Parametrique'))
+        fig.add_trace(go.Scatter(x=model_noParam.index,
+                                 y=model_noParam.score,
+                                 text=model_noParam.model,
+                                 mode='lines+markers+text',
+                                 name='Non Parametrique'))
+        fig.update_traces(textposition='top center')
+        fig.update_layout(font_family='IBM Plex Sans',
+                          xaxis=dict(visible=False),
+                          uniformtext_minsize=10, uniformtext_mode='hide',
+                          margin=dict(l=10, r=10, b=10, t=10),
+                          legend=dict(x=1, y=1.02,
+                                      orientation="h",
+                                      yanchor="bottom",
+                                      xanchor="right",
+                                      bgcolor='rgba(0,0,0,0)',
+                                      font=dict(size=12)))
+        st.plotly_chart(fig, use_container_width=True)
+
 
     if choice == "Clustering":
         space(1)
@@ -938,7 +1070,20 @@ if week == 'Semaine 2':
         st.plotly_chart(fig, use_container_width=True)
         
         clusters = data.groupby(by=['clusters']).count()['SalePrice']
-        st.write(clusters)
+        clusters = clusters.reset_index()
+        clusters = clusters.rename(columns={'clusters': 'Clusters', 'SalePrice': 'Number of Houses'})
+        
+        fig = go.Figure(data=[go.Bar(
+            x=clusters['Clusters'], y=clusters['Number of Houses'],
+            text=clusters['Number of Houses'],
+            textposition='auto',
+        )])
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                                   'paper_bgcolor': 'rgba(0,0,0,0)', })
+        fig.update_layout(title='<b>Clusters size</b>',
+                          title_x=0.5, title_font_family="Verdana", showlegend=False)
+        st.plotly_chart(fig, use_container_width=True)
+        
         
         fig = px.scatter(data, x="GrLivArea", y="SalePrice", color="clusters")
         fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
