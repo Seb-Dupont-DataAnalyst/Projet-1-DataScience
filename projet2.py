@@ -961,13 +961,15 @@ if week == 'Semaine 2':
         
         BP = Birch(threshold=0.0001)
 
+        img = https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/Elbow%20Birch.png?raw=true
+        st.image(img)
         # Quick examination of elbow method to find numbers of clusters to make.
         #print('Elbow Method to determine the number of clusters to be formed:')
-        Elbow_M = KElbowVisualizer(BP, k=10)
-        Elbow_M = Elbow_M.fit(X)
-        fig = Elbow_M
+        #Elbow_M = KElbowVisualizer(BP, k=10)
+        #Elbow_M = Elbow_M.fit(X)
+        #fig = Elbow_M
         #fig = Elbow_M.show()
-        st.write(fig)
+        #st.write(fig)
         
         # define the model
         model = Birch(threshold=0.01, n_clusters=5)
