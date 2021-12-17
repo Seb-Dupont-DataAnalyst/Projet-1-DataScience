@@ -907,56 +907,8 @@ if week == 'Semaine 2':
         space(1)
         st.markdown('<body class="p">Groupez les tous !</body>', unsafe_allow_html=True)
         space(2)
-        
-        def transfo(df):
 
-          dico = { 'Po' : 0, 'Fa' : 1, 'TA' : 2,  'Gd' : 3,'Ex' : 4}
-          df['KitchenQual'] = df['KitchenQual'].map(dico)
-          df['ExterQual'] = df['ExterQual'].map(dico)
-          df2 = pd.get_dummies(df[['Neighborhood','GarageType']])
-          result= pd.concat([df2,df[['LotArea', 'LotFrontage', 'BsmtFinSF1', 'BsmtUnfSF',
-                                     'LotConfig', 'LotShape',
-                                     'OverallQual', 'GrLivArea', 'ExterQual', 
-                                     'KitchenQual', 'GarageCars','GarageArea',
-                                     'TotalBsmtSF', '1stFlrSF','FullBath','TotRmsAbvGrd',
-                                     'YearBuilt','YearRemodAdd','Id', 'SalePrice']]], axis=1)
-
-          return(result)
-
-        data = transfo(pd.read_csv('https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train.csv'))
-        
-        # LotFrontage : RandomForestRegressor pour remplir les NaN
-        cols_data = ['LotFrontage', 'LotArea', '1stFlrSF', 'LotConfig', 'LotShape']
-        df = data[cols_data].copy()
-        df['LotConfig'] = df['LotConfig'].factorize()[0]
-        df['LotShape'] = df['LotShape'].factorize()[0]
-
-        train = df[(data['LotFrontage'].notna()) & (data['LotArea'] < 30000)]
-        predic = df[data['LotFrontage'].isna()]
-
-        X = train[['LotArea', '1stFlrSF', 'LotConfig', 'LotShape']]
-        y = train['LotFrontage']
-
-        X_train, X_test, y_train, y_test = train_test_split(
-                X, y, random_state=42, train_size=0.80)
-
-        # parametres suite à un RandomizedSearch
-        modelRFR = RandomForestRegressor(n_estimators=2000,
-                                         min_samples_split=10,
-                                         min_samples_leaf=1,
-                                         max_features='sqrt',
-                                         max_depth=100,
-                                         bootstrap=True).fit(X_train, y_train)
-
-        print('Score de la regression :', modelRFR.score(X_test, y_test))
-
-        nan_cols = ['LotArea', '1stFlrSF', 'LotConfig', 'LotShape']
-
-        temp = data[data['LotFrontage'].isna()]
-        temp['LotFrontage'] = modelRFR.predict(predic[nan_cols])
-
-        data = pd.concat([data[data['LotFrontage'].notna()], temp]).drop(columns=['LotConfig', 'LotShape'])
-        
+        data = load_df("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train_clusters.csv")
         X = data.drop(columns = ['ExterQual', 'KitchenQual'])
         
         BP = Birch(threshold=0.0001)
