@@ -959,13 +959,13 @@ if week == 'Semaine 2':
         
         X = data.drop(columns = ['ExterQual', 'KitchenQual'])
         
-        #BP = Birch(threshold=0.0001)
+        BP = Birch(threshold=0.0001)
 
         # Quick examination of elbow method to find numbers of clusters to make.
         #print('Elbow Method to determine the number of clusters to be formed:')
-        #Elbow_M = KElbowVisualizer(BP, k=10)
-        #Elbow_M.fit(X)
-        #Elbow_M.show()
+        Elbow_M = KElbowVisualizer(BP, k=10)
+        Elbow_M.fit(X)
+        Elbow_M.show()
         
         # define the model
         model = Birch(threshold=0.01, n_clusters=5)
