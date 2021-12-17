@@ -1047,6 +1047,7 @@ if week == 'Semaine 2':
 
         img = "https://github.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/blob/main/Elbow%20Birch.png?raw=true"
         st.image(img, width=600)
+        space(2)
         # Quick examination of elbow method to find numbers of clusters to make.
         #print('Elbow Method to determine the number of clusters to be formed:')
         #Elbow_M = KElbowVisualizer(BP, k=10)
