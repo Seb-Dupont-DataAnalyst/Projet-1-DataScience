@@ -909,7 +909,7 @@ if week == 'Semaine 2':
         space(2)
         
         
-        X = data
+        X = data.drop(columns= ['ExterQual', 'KitchenQual']
         
         #BP = Birch(threshold=0.0001)
 
