@@ -694,7 +694,7 @@ if week == 'Semaine 2':
 
     if choice == "Distributions":
         space(1)
-        st.markdown('<body class="title">Distribuons les Distributions !</body>', unsafe_allow_html=True)
+        st.markdown('<body class="p">Distribuons les Distributions !</body>', unsafe_allow_html=True)
 
         space(1)
         st.markdown("Les distributions ont ")
