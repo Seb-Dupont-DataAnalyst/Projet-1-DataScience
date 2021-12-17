@@ -699,7 +699,7 @@ if week == 'Semaine 2':
 
         space(2)
         st.title("La base de travail")
-        cols = st.columns(3)
+        cols = st.beta_columns(3)
         with cols[0]:
             st.subheader("Le nettoyage des données")
             st.image('https://static.thenounproject.com/png/2301589-200.png',
