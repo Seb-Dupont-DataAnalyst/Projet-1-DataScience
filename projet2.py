@@ -15,6 +15,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_log_error
 from scipy.stats import ttest_ind, johnsonsu, norm, laplace, skewnorm, gennorm, chi2, tukeylambda, t, levy, chi
 import streamlit as st
+from yellowbrick.cluster import KElbowVisualizer
+from sklearn.cluster import Birch
 
 
 # CONFIG #
@@ -904,3 +906,44 @@ if week == 'Semaine 2':
     if choice == "Clustering":
         space(1)
         st.markdown('<body class="p">Groupez les tous !</body>', unsafe_allow_html=True)
+        space(2)
+        
+        X = data
+        
+        BP = Birch(threshold=0.0001)
+
+        # Quick examination of elbow method to find numbers of clusters to make.
+        print('Elbow Method to determine the number of clusters to be formed:')
+        Elbow_M = KElbowVisualizer(BP, k=10)
+        Elbow_M.fit(X)
+        Elbow_M.show()
+        
+        # define the model
+        model = Birch(threshold=0.01, n_clusters=5)
+        # fit the model
+        model.fit(X)
+        # assign a cluster to each example
+        yhat = model.predict(X)
+        
+        data['clusters'] = model.labels_
+        
+        fig = px.box(data, x="clusters", y="SalePrice", color="clusters")
+        #fig.update_yaxes(range=[0, 400000])
+
+        st.plotly_chart(fig, use_container_width=True)
+        
+        clusters = data.groupby(by=['cluster_birch']).count()['SalePrice']
+        st.write(clusters)
+        
+        fig = px.scatter(data, x="GrLivArea", y="SalePrice", color="clusters")
+        fig.update_layout({'plot_bgcolor': 'rgba(0,0,0,0)',
+                           'paper_bgcolor': 'rgba(0,0,0,0)', })
+        fig.update_layout(title='<b>Clusters</b>',
+                          title_x=0.5, title_font_family="Verdana", showlegend=False)
+        fig.update_yaxes(range=[0, 700000])
+        fig.update_xaxes(range=[0, 4000])
+        fig.update(layout_coloraxis_showscale=False)
+        st.plotly_chart(fig, use_container_width=True)
+
+        
+        
