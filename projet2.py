@@ -166,8 +166,65 @@ def value(number):
 df = load_df("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/train.csv")
 df_test = load_df("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/test.csv")
 df_final = load_df("https://raw.githubusercontent.com/Seb-Dupont-DataAnalyst/Projet-1-DataScience/main/result_file_1")
+data = transfo(df)
 
 localisation = pd.DataFrame({'awesome cities': ['Ames'], 'lat': [42.034534], 'lon': [-93.620369]})
+
+# CALCULE DES DISTRIB (pour réduire le chargement entre les pages)
+
+# valeurs obtenues après application d'un FITTER sur les données
+grliv_dist = chi2.rvs(df=12.309473472853526,
+                      loc=254.64499056971584, scale=102.4266951654377, size=10000)
+totbsmt_dist = johnsonsu.rvs(a=-0.5917807657522386, b=1.3919373074176713,
+                             loc=821.4459540582604, scale=423.0770582601845, size=10000)
+ggeaera_dist = laplace.rvs(loc=479.9999999992406, scale=159.93355122237585, size=10000)
+florsf_dist = skewnorm.rvs(a=4.514262333482848,
+                           loc=698.8500285155108, scale=603.6857562658566, size=10000)
+totrms_dist = gennorm.rvs(beta=0.2962186633639843,
+                          loc=6.0, scale=0.007513870476739083, size=10000)
+lotarea_dist = tukeylambda.rvs(lam=-0.3886757898461206,
+                               loc=9414.12399652672, scale=1281.190016263276, size=10000)
+lotfront_dist = t.rvs(df=3.7001417217447754,
+                      loc=69.48591606554618, scale=16.53208231942333, size=10000)
+bsmtfin_dist = levy.rvs(loc=-2.649602255093832, scale=8.107296031226449, size=10000)
+bsmtnofin_dist = chi.rvs(df=0.7986648461917891,
+                         loc=-5.807409708971971e-29, scale=804.9431885685528, size=10000)
+
+fig_grliv = ff.create_distplot([data['GrLivArea'], grliv_dist[grliv_dist > 0]],
+                               ['GrLivArea', 'Chi2 distribution'],
+                               show_hist=False)
+#fig_totbsmt = ff.create_distplot([data['TotalBsmtSF'], totbsmt_dist[totbsmt_dist > 0]],
+                                 #['TotalBsmtSF', 'Johnsonsu distribution'],
+                                 #show_hist=False)
+fig_ggeaera = ff.create_distplot([data['GarageArea'], ggeaera_dist],
+                                 ['GarageArea', 'Laplace distribution'],
+                                 show_hist=False)
+fig_florsf = ff.create_distplot([data['1stFlrSF'], florsf_dist],
+                                ['1stFlrSF', 'Skewnorm distribution'],
+                                show_hist=False)
+#fig_bsmtfin = ff.create_distplot([data['BsmtFinSF1'], bsmtfin_dist[bsmtfin_dist < 1000]],
+                                 #['BsmtFinSF1', 'levy distribution'],
+                                 #show_hist=False)
+#fig_bsmtnofin = ff.create_distplot([data['BsmtUnfSF'], bsmtnofin_dist],
+                                   #['BsmtUnfSF', 'chi distribution'],
+                                   #show_hist=False)
+fig_lotfront = ff.create_distplot([data['LotFrontage'], lotfront_dist[lotfront_dist > 0]],
+                                  ['LotFrontage', 't distribution'],
+                                  show_hist=False)
+fig_lotarea = ff.create_distplot([data['LotArea'], lotarea_dist[lotarea_dist > 0]],
+                                 ['LotArea', 'tukeylambda distribution'],
+                                 show_hist=False)
+for fig in [fig_grliv, fig_ggeaera, fig_florsf, fig_lotfront, fig_lotarea]:
+    fig.update_layout(font_family='IBM Plex Sans',
+                      yaxis=dict(visible=False),
+                      uniformtext_minsize=10, uniformtext_mode='hide',
+                      margin=dict(l=10, r=10, b=10, t=10),
+                      legend=dict(x=1, y=1.02,
+                                  orientation="h",
+                                  yanchor="bottom",
+                                  xanchor="right",
+                                  bgcolor='rgba(0,0,0,0)',
+                                  font=dict(size=12)))
 
 
 # SIDEBAR #
@@ -695,8 +752,6 @@ if week == 'Semaine 1':
 if week == 'Semaine 2':
     choice = st.sidebar.radio("Semaine 2", ("Previously", "Distributions", "Machine Learning", "Clustering"))
 
-    data = transfo(df)
-
     if choice == "Previously":
         space(1)
         st.markdown('''<body class="p">Previoulsy on the AMES'PROJECT !</body>''', unsafe_allow_html=True)
@@ -796,60 +851,6 @@ if week == 'Semaine 2':
 
         space(2)
         st.title('Continuons sur les données... continues')
-
-        # valeurs obtenues après application d'un FITTER sur les données
-        grliv_dist = chi2.rvs(df=12.309473472853526,
-                              loc=254.64499056971584, scale=102.4266951654377, size=10000)
-        totbsmt_dist = johnsonsu.rvs(a=-0.5917807657522386, b=1.3919373074176713,
-                                     loc=821.4459540582604, scale=423.0770582601845, size=10000)
-        ggeaera_dist = laplace.rvs(loc=479.9999999992406, scale=159.93355122237585, size=10000)
-        florsf_dist = skewnorm.rvs(a=4.514262333482848,
-                                   loc=698.8500285155108, scale=603.6857562658566, size=10000)
-        totrms_dist = gennorm.rvs(beta=0.2962186633639843,
-                                  loc=6.0, scale=0.007513870476739083, size=10000)
-        lotarea_dist = tukeylambda.rvs(lam=-0.3886757898461206,
-                                       loc=9414.12399652672, scale=1281.190016263276, size=10000)
-        lotfront_dist = t.rvs(df=3.7001417217447754,
-                              loc=69.48591606554618, scale=16.53208231942333, size=10000)
-        bsmtfin_dist = levy.rvs(loc=-2.649602255093832, scale=8.107296031226449, size=10000)
-        bsmtnofin_dist = chi.rvs(df=0.7986648461917891,
-                                 loc=-5.807409708971971e-29, scale=804.9431885685528, size=10000)
-
-        fig_grliv = ff.create_distplot([data['GrLivArea'], grliv_dist[grliv_dist > 0]],
-                                       ['GrLivArea', 'Chi2 distribution'],
-                                       show_hist=False)
-        #fig_totbsmt = ff.create_distplot([data['TotalBsmtSF'], totbsmt_dist[totbsmt_dist > 0]],
-                                         #['TotalBsmtSF', 'Johnsonsu distribution'],
-                                         #show_hist=False)
-        fig_ggeaera = ff.create_distplot([data['GarageArea'], ggeaera_dist],
-                                         ['GarageArea', 'Laplace distribution'],
-                                         show_hist=False)
-        fig_florsf = ff.create_distplot([data['1stFlrSF'], florsf_dist],
-                                        ['1stFlrSF', 'Skewnorm distribution'],
-                                        show_hist=False)
-        #fig_bsmtfin = ff.create_distplot([data['BsmtFinSF1'], bsmtfin_dist[bsmtfin_dist < 1000]],
-                                         #['BsmtFinSF1', 'levy distribution'],
-                                         #show_hist=False)
-        #fig_bsmtnofin = ff.create_distplot([data['BsmtUnfSF'], bsmtnofin_dist],
-                                           #['BsmtUnfSF', 'chi distribution'],
-                                           #show_hist=False)
-        fig_lotfront = ff.create_distplot([data['LotFrontage'], lotfront_dist[lotfront_dist > 0]],
-                                          ['LotFrontage', 't distribution'],
-                                          show_hist=False)
-        fig_lotarea = ff.create_distplot([data['LotArea'], lotarea_dist[lotarea_dist > 0]],
-                                         ['LotArea', 'tukeylambda distribution'],
-                                         show_hist=False)
-        for fig in [fig_grliv, fig_ggeaera, fig_florsf, fig_lotfront, fig_lotarea]:
-            fig.update_layout(font_family='IBM Plex Sans',
-                              yaxis=dict(visible=False),
-                              uniformtext_minsize=10, uniformtext_mode='hide',
-                              margin=dict(l=10, r=10, b=10, t=10),
-                              legend=dict(x=1, y=1.02,
-                                          orientation="h",
-                                          yanchor="bottom",
-                                          xanchor="right",
-                                          bgcolor='rgba(0,0,0,0)',
-                                          font=dict(size=12)))
 
         space(1)
         cols = st.columns(2)
